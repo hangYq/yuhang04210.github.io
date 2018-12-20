@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="个人博客">
 <meta property="og:description" content="css实现左侧宽度固定，右侧自适应布局的四种方法1. 左侧浮动，右侧生成BFC123456789&amp;lt;div className = &amp;#123; style[&apos;float-left-center&apos;] &amp;#125;&amp;gt;       &amp;lt;div className=&amp;#123; style.left &amp;#125;&amp;gt;&amp;lt;/div&amp;gt;       &amp;lt;div classNam">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-20T02:20:07.068Z">
+<meta property="og:updated_time" content="2018-12-20T02:27:04.555Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="两栏布局（左侧固定，右侧自适应）">
 <meta name="twitter:description" content="css实现左侧宽度固定，右侧自适应布局的四种方法1. 左侧浮动，右侧生成BFC123456789&amp;lt;div className = &amp;#123; style[&apos;float-left-center&apos;] &amp;#125;&amp;gt;       &amp;lt;div className=&amp;#123; style.left &amp;#125;&amp;gt;&amp;lt;/div&amp;gt;       &amp;lt;div classNam">
@@ -190,6 +190,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -227,7 +237,7 @@
   
   
 
-  <article class="post post-type-categories" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
@@ -271,6 +281,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/css/" itemprop="url" rel="index">
+                    <span itemprop="name">css</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -407,6 +439,15 @@
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
 
             
 
@@ -522,6 +563,8 @@
   
 
 
+  
+
 
 
 
@@ -560,6 +603,11 @@
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 
