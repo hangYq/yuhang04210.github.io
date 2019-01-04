@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="前端知识总结">
+<meta name="description" content="DOM事件类一、基本概念：DOM事件级别   DOM事件级别 DOM事件 描述     DOM0 element.onclick=function(){} DOM0时代制定的DOM事件标准   DOM2 element.addEventListener(‘click’,function(){ },false) ①DOM2时代制定的事件监听；②DOM1没有制定与事件相关的；③false,默认表示冒泡">
 <meta name="keywords" content="前端、JavaScript、css、html、node、react">
-<meta property="og:type" content="website">
-<meta property="og:title" content="个人博客">
-<meta property="og:url" content="http://yoursite.com/categories/css/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DOM事件">
+<meta property="og:url" content="http://yoursite.com/2019/01/04/DOM事件/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="前端知识总结">
+<meta property="og:description" content="DOM事件类一、基本概念：DOM事件级别   DOM事件级别 DOM事件 描述     DOM0 element.onclick=function(){} DOM0时代制定的DOM事件标准   DOM2 element.addEventListener(‘click’,function(){ },false) ①DOM2时代制定的事件监听；②DOM1没有制定与事件相关的；③false,默认表示冒泡">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-04T06:31:06.061Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="个人博客">
-<meta name="twitter:description" content="前端知识总结">
+<meta name="twitter:title" content="DOM事件">
+<meta name="twitter:description" content="DOM事件类一、基本概念：DOM事件级别   DOM事件级别 DOM事件 描述     DOM0 element.onclick=function(){} DOM0时代制定的DOM事件标准   DOM2 element.addEventListener(‘click’,function(){ },false) ①DOM2时代制定的事件监听；②DOM1没有制定与事件相关的；③false,默认表示冒泡">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/css/">
+  <link rel="canonical" href="http://yoursite.com/2019/01/04/DOM事件/">
 
 
 
 
 
-  <title>分类: css | 个人博客</title>
+  <title>DOM事件 | 个人博客</title>
   
 
 
@@ -144,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -250,53 +251,241 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>css<small>分类</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/04/DOM事件/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="喻航">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/12/19/两栏布局/" itemprop="url">
-              
-                <span itemprop="name">两栏布局（左侧固定，右侧自适应）</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">DOM事件</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-19T16:30:22+08:00" content="2018-12-19">
-          12-19
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-04T14:22:35+08:00">
+                2019-01-04
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+          
+          
+            <span class="post-meta-divider">|</span>
+            <span id="busuanzi_value_page_pv"></span>次阅读
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="DOM事件类"><a href="#DOM事件类" class="headerlink" title="DOM事件类"></a>DOM事件类</h4><h5 id="一、基本概念：DOM事件级别"><a href="#一、基本概念：DOM事件级别" class="headerlink" title="一、基本概念：DOM事件级别"></a>一、基本概念：DOM事件级别</h5><table>
+<thead>
+<tr>
+<th style="text-align:center">DOM事件级别</th>
+<th style="text-align:center">DOM事件</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">DOM0</td>
+<td style="text-align:center">element.onclick=function(){}</td>
+<td style="text-align:center">DOM0时代制定的DOM事件标准</td>
+</tr>
+<tr>
+<td style="text-align:center">DOM2</td>
+<td style="text-align:center">element.addEventListener(‘click’,function(){ },false)</td>
+<td style="text-align:center">①DOM2时代制定的事件监听；②DOM1没有制定与事件相关的；③false,默认表示冒泡阶段触发，true表示捕获阶段</td>
+</tr>
+<tr>
+<td style="text-align:center">DOM3</td>
+<td style="text-align:center">element.addEventListener(‘keyup’,function(){ },false)</td>
+<td style="text-align:center">DOM3在DOM2的基础上增加了一些鼠标键盘事件</td>
+</tr>
+</tbody>
+</table>
+<h5 id="二、DOM事件模型（冒泡、捕获）"><a href="#二、DOM事件模型（冒泡、捕获）" class="headerlink" title="二、DOM事件模型（冒泡、捕获）"></a>二、DOM事件模型（冒泡、捕获）</h5><blockquote>
+<ul>
+<li>事件冒泡：是由IE团队提出来的，即事件是由最具体的那个元素j接收，然后逐级向上传播</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>事件捕获： 事件捕获是由NetSpace团队提出来的，是由最上一级节点先接收事件，然后向下传播到具体的节点</li>
+</ul>
+</blockquote>
+<h5 id="三、DOM事件流"><a href="#三、DOM事件流" class="headerlink" title="三、DOM事件流"></a>三、DOM事件流</h5><p>“DOM2级事件”规定了事件l流包含3个阶段，事件捕获阶段，目标阶段和事件冒泡阶段。首先发生的事件捕获阶段，然后实际的目标接收到事件，最后阶段是冒泡阶段。</p>
+<h5 id="四、DOM事件捕获的具体流程"><a href="#四、DOM事件捕获的具体流程" class="headerlink" title="四、DOM事件捕获的具体流程"></a>四、DOM事件捕获的具体流程</h5><p>window  -&gt; document(文档对象) -&gt; html -&gt; body -&gt; div(具体目标元素)</p>
+<p>备注：具体代码参考<a href="https://github.com/yuhang04210/full-stack-knowledge-note/blob/master/DOM%E4%BA%8B%E4%BB%B6/DOM%E4%BA%8B%E4%BB%B6%E6%8D%95%E8%8E%B7%E6%B5%81%E7%A8%8B.html" target="_blank" rel="noopener">DOM事件捕获流程</a></p>
+<h5 id="五、DOM事件冒泡的具体流程"><a href="#五、DOM事件冒泡的具体流程" class="headerlink" title="五、DOM事件冒泡的具体流程"></a>五、DOM事件冒泡的具体流程</h5><p>div(具体目标元素) -&gt; body -&gt; html -&gt; document(文档对象) -&gt; window </p>
+<p>备注：具体代码参考<a href="https://github.com/yuhang04210/full-stack-knowledge-note/blob/master/DOM%E4%BA%8B%E4%BB%B6/DOM%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E6%B5%81%E7%A8%8B.html" target="_blank" rel="noopener">DOM事件冒泡流程</a></p>
+<h5 id="六、Event对象的具体应用"><a href="#六、Event对象的具体应用" class="headerlink" title="六、Event对象的具体应用"></a>六、Event对象的具体应用</h5><table>
+<thead>
+<tr>
+<th style="text-align:center">事件对象</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">event.preventDefault()</td>
+<td style="text-align:center">阻止默认事件</td>
+</tr>
+<tr>
+<td style="text-align:center">event.stopPropagation()</td>
+<td style="text-align:center">阻止冒泡</td>
+</tr>
+<tr>
+<td style="text-align:center">event.currentTarget()</td>
+<td style="text-align:center">当前绑定事件对象的元素</td>
+</tr>
+<tr>
+<td style="text-align:center">event.target()</td>
+<td style="text-align:center">当前被点击的元素</td>
+</tr>
+</tbody>
+</table>
+<h5 id="七、自定义事件"><a href="#七、自定义事件" class="headerlink" title="七、自定义事件"></a>七、自定义事件</h5><blockquote>
+<p>自定义不带参数事件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ev = <span class="keyword">new</span> Event(<span class="string">'cat'</span>);</span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'cat'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'自定义不带参数事件'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">document</span>.dispatchEvent(ev);</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>自定义可以传参事件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ev = <span class="keyword">new</span> CustomEvent(<span class="string">'dog'</span>,&#123; <span class="attr">detail</span>: &#123;</span><br><span class="line">    a : <span class="string">'参数a'</span></span><br><span class="line">&#125;&#125;);</span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'dog'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'自定义事件参数为'</span>,e.detail);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">document</span>.dispatchEvent(ev);</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>备注：具体代码参考<a href="https://github.com/yuhang04210/full-stack-knowledge-note/blob/master/DOM%E4%BA%8B%E4%BB%B6/%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6.html" target="_blank" rel="noopener">自定义事件</a></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/19/两栏布局/" rel="next" title="两栏布局（左侧固定，右侧自适应）">
+                <i class="fa fa-chevron-left"></i> 两栏布局（左侧固定，右侧自适应）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -304,6 +493,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -324,8 +517,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -378,6 +580,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#DOM事件类"><span class="nav-number">1.</span> <span class="nav-text">DOM事件类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一、基本概念：DOM事件级别"><span class="nav-number">1.1.</span> <span class="nav-text">一、基本概念：DOM事件级别</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二、DOM事件模型（冒泡、捕获）"><span class="nav-number">1.2.</span> <span class="nav-text">二、DOM事件模型（冒泡、捕获）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三、DOM事件流"><span class="nav-number">1.3.</span> <span class="nav-text">三、DOM事件流</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#四、DOM事件捕获的具体流程"><span class="nav-number">1.4.</span> <span class="nav-text">四、DOM事件捕获的具体流程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#五、DOM事件冒泡的具体流程"><span class="nav-number">1.5.</span> <span class="nav-text">五、DOM事件冒泡的具体流程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#六、Event对象的具体应用"><span class="nav-number">1.6.</span> <span class="nav-text">六、Event对象的具体应用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#七、自定义事件"><span class="nav-number">1.7.</span> <span class="nav-text">七、自定义事件</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -528,6 +746,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
