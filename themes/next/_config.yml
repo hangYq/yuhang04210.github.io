@@ -398,6 +398,7 @@ valine:
 
 # Support for LiveRe comments system.
 # You can get your uid from https://livere.com/insight/myCode (General web site)
+# 来必力评论
 livere_uid: MTAyMC80MTk5OS8xODU0Ng==
 
 # Gitment
