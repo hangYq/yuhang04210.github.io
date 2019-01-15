@@ -185,7 +185,7 @@ tags:
 
 
 
-① 首先看一下c instanceof Parent
+② 再看一下c instanceof Parent
 
 ```js
     function instance_of (L,R) {
