@@ -12,11 +12,14 @@ tags:
 #### 一、创建对象的几种方式
 
 1. 对象直接量：
+
 ```js
     var o1 = { name : 'tom'};
     var o2 = new Object({ name : 'jack' });
 ```
+
 2. 构造函数：
+
 ```js
     function Person (name,age) {
         this.name = name;
@@ -26,6 +29,7 @@ tags:
 ```
 
 3. Object.create()方式：
+
 ```js
     var p = { name : 'john'};
     var p1 = Object.create(p);
@@ -37,6 +41,8 @@ tags:
     2. 修改新建对象的原型对象为构造函数的原型对象；
     3. 修改this的指向；
     4. 返回新建对象。
+
+
 
 ```js
     /*
@@ -86,6 +92,7 @@ tags:
 
 #### 三、构造函数、原型、实例之间的关系：
     每个构造函数都有一个原型对象，原型对象都有一个指向构造函数的指针，而实例都包含一个指向原型对象的内部指针。------《JavaScript高级程序设计》
+
 
 ```js
     function Person (name,age) {
@@ -139,6 +146,7 @@ tags:
 
 
 2. 对象的继承二：原型链继承
+
 
 ```js
     function Parent_2 (name,age) {
@@ -238,6 +246,8 @@ tags:
     缺点：在上面的组合继承中，在代码`Child_3.prototype = new Parent_3()`和`Child_3.prototype = new Parent_3()`中Parent_3()执行了两次，还可以对其进行优化。`console.log(c4.constructor === Child_3 )`的执行结果为`false`，说明我们修改了`Child_3.prototype`中constructor的指向，这不是我们所希望看到的。
 
 组合继承的优化一:
+
+
 ```js
     function Parent_3 () {
         this.name = 'parent';
@@ -274,6 +284,8 @@ tags:
 在上面的代码中通过`Child_3.prototype = Parent_3.prototype`来解决`Parent_3`执行两次的问题。
 
 组合继承的优化二:
+
+
 ```js
     function Parent_3 () {
         this.name = 'parent';

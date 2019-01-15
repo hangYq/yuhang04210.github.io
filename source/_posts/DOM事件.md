@@ -51,6 +51,7 @@ div(具体目标元素) -> body -> html -> document(文档对象) -> window
 
 ##### 七、自定义事件
 > 自定义不带参数事件
+
 ```javascript
     let ev = new Event('cat');
     document.addEventListener('cat',function() {
@@ -60,6 +61,7 @@ div(具体目标元素) -> body -> html -> document(文档对象) -> window
 ```
 
 > 自定义可以传参事件
+
 ```javascript
     let ev = new CustomEvent('dog',{ detail: {
         a : '参数a'

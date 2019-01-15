@@ -9,6 +9,7 @@ tags:
 ### class的基本使用
 
 #### 一、es6的 class 与es5 的构造函数
+
 ```js
     //  es6 class
     class Person {
@@ -38,6 +39,7 @@ tags:
 
 
 #### 二、class的数据类型与constructor的指向
+
 ```js
     class Person {
         constructor(name,age) {
@@ -58,6 +60,7 @@ tags:
 
 
 #### 三、构造函数的prototype属性，在es6中继续存在，实际上es6中class的所有方法都是定义在类的prototype属性上的
+
 ```js
     class Person {
         constructor (name,age) {
@@ -140,6 +143,7 @@ tags:
 
 
 ##### 解决方案一：在构造方法中绑定this
+
 ```js
     class Person {
         constructor(name, age) {
@@ -168,6 +172,7 @@ tags:
 ```
 
 ##### 解决方案二：箭头函数
+
 ```js
     class Person {
         constructor(name, age) {
@@ -282,6 +287,7 @@ tags:
 ```
 
 方式二：新写法
+
 ```js
     class Person {
         static prop = 'tom';

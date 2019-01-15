@@ -67,6 +67,7 @@ tags:
 ```
 
 3. `promise`新建后就会执行
+
 ```js
     let promise = new Promise((resolve,rejcet) => {
         console.log('promise');
@@ -207,6 +208,7 @@ finally方法用于指定不管promise最后的状态是成功还是失败都会
 ### 七、promise.all()
 
 `promise.all()`方法用于将多个promise实例，包装成一个新的promise实例。
+
 ```js
     let p = Promise.all([p1,p2,p3]);
 ```
@@ -253,9 +255,11 @@ finally方法用于指定不管promise最后的状态是成功还是失败都会
 
 ### 八、promise.race()
 `promise.race()`方法同样将多个promise实例，包装成一个新的promise实例。
+
 ```js
     let p = Promise.race([p1,p2,p3]);
 ```
+
 新的p实例的状态由p1,p2,p3的状态决定：
 *  只要p1,p2,p3之中有一个实例率先改变状态，p的状态就跟着改变。那个率先改变的promise的实例返回的值，就传递给p的回调函数。
 
