@@ -31,13 +31,93 @@ tags:
 ##### 四、DOM事件捕获的具体流程
 window  -> document(文档对象) -> html -> body -> div(具体目标元素)
 
-备注：具体代码参考[DOM事件捕获流程](https://github.com/yuhang04210/full-stack-knowledge-note/blob/master/DOM%E4%BA%8B%E4%BB%B6/DOM%E4%BA%8B%E4%BB%B6%E6%8D%95%E8%8E%B7%E6%B5%81%E7%A8%8B.html)
-
+```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>DOM事件捕获流程</title>
+    </head>
+    <body>
+        <div>
+            <button id="btn">按钮</button>
+        </div>
+        <script>
+            // 所有的addEventListener最后一个参数是true，表示在捕获阶段，不加默认为false，在冒泡阶段触发
+            // window 
+            window.addEventListener('click',function() {
+                console.log('window')            
+            },true)
+            // document
+            document.addEventListener('click',function () {
+                console.log('document')
+            },true)
+            // html
+            document.documentElement.addEventListener('click',function(){
+                console.log('html')
+            },true)
+            // body
+            document.body.addEventListener('click',function(){
+                console.log('body')
+            },true)
+            // div
+            let btn = document.getElementById("btn");
+            btn.addEventListener('click',function () {
+                console.log('div')
+            },true)
+        </script>
+    </body>
+    </html>
+```
 
 ##### 五、DOM事件冒泡的具体流程
 div(具体目标元素) -> body -> html -> document(文档对象) -> window 
 
-备注：具体代码参考[DOM事件冒泡流程](https://github.com/yuhang04210/full-stack-knowledge-note/blob/master/DOM%E4%BA%8B%E4%BB%B6/DOM%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E6%B5%81%E7%A8%8B.html)
+
+```html
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>DOM事件冒泡流程</title>
+    </head>
+
+    <body>
+        <div>
+            <button id="btn">按钮</button>
+        </div>
+        <script>
+            // window 
+            window.addEventListener('click', function () {
+                console.log('window')
+            }, false)
+            // document
+            document.addEventListener('click', function () {
+                console.log('document')
+            }, false)
+            // html
+            document.documentElement.addEventListener('click', function () {
+                console.log('html')
+            }, false)
+            // body
+            document.body.addEventListener('click', function () {
+                console.log('body')
+            }, false)
+            // div
+            let btn = document.getElementById("btn");
+            btn.addEventListener('click', function () {
+                console.log('div')
+            }, false)
+        </script>
+    </body>
+
+    </html>
+```
 
 
 ##### 六、Event对象的具体应用
@@ -71,6 +151,67 @@ div(具体目标元素) -> body -> html -> document(文档对象) -> window
     })
     document.dispatchEvent(ev);
 ```
-备注：具体代码参考[自定义事件](https://github.com/yuhang04210/full-stack-knowledge-note/blob/master/DOM%E4%BA%8B%E4%BB%B6/%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6.html)
 
+
+
+```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>自定义事件</title>
+    </head>
+    <body>
+        <div>
+            <button id="btn">按钮1</button>
+            <button id="btn2">按钮2</button>
+        </div>
+        <script>
+            {
+                // 一、 自定义一个不可传参事件
+                // new 一个custon事件对象，事件名为custom
+                let event = new Event('custom');
+                // 监听自定义事件
+                document.addEventListener('custom', function () {
+                    console.log('自定义事件')
+                })
+                let btn = document.getElementById('btn');
+                btn.addEventListener('click', function () {
+                    console.log('click事件');
+                    // 触发自定义事件
+                    document.dispatchEvent(event);
+                })
+            }
+        </script>
+
+
+        <script>
+            {
+                // 自定义一个传参事件
+                // new 一个自定义事件对象，并且传递参数
+                /*
+                    * bubbles : 是否冒泡
+                    * cancelable ： 是否可取消该事件
+                    * detail : 需要传递的事件参数
+                */
+                let event_2 = new CustomEvent('customEvent', 
+                    { bubbles: 'true', cancelable: 'true', detail : { a: '参数a', b: '参数b' }} 
+                );
+                // 监听自定义事件
+                document.addEventListener('customEvent', function (e) {
+                    console.log('自定义事件,参数为:', e);
+                })
+                let btn_2 = document.getElementById("btn2");
+                btn_2.addEventListener('click',function(){
+                    console.log('clcik事件2');
+                    document.dispatchEvent(event_2);
+                })
+                
+            }
+        </script>
+    </body>
+    </html>
+```
 
