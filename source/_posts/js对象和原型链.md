@@ -86,6 +86,7 @@ tags:
 
 #### 三、构造函数、原型、实例之间的关系：
     每个构造函数都有一个原型对象，原型对象都有一个指向构造函数的指针，而实例都包含一个指向原型对象的内部指针。------《JavaScript高级程序设计》
+
 ```js
     function Person (name,age) {
         this.name = name;
@@ -136,7 +137,9 @@ tags:
     缺点：可以实现继承，但是只能继承父类构造函数的属性和方法，不能继承父类原型链上的方法和属性.
 
 
+
 2. 对象的继承二：原型链继承
+
 ```js
     function Parent_2 (name,age) {
         this.name = 'parent name';
