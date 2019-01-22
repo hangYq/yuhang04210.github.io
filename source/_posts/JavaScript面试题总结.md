@@ -15,6 +15,7 @@ tags:
 
 ```js
     var a = 1;
+    
     if(!(b in window)) { 
         var b = 2;
         a += 1;
