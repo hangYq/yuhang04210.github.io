@@ -15,14 +15,14 @@ tags:
 
 ```js
     var a = 1;
-		if(!(b in window)) { 
-			var b = 2;
-			a += 1;
-		}else {
-			a += 2;
-		}
-		console.log(a) // 3 
-		console.log(b) // undefined
+    if(!(b in window)) { 
+        var b = 2;
+        a += 1;
+    }else {
+        a += 2;
+    }
+    console.log(a) // 3 
+    console.log(b) // undefined
 ```
 
 上面的代码可以理解为：在if条件中，变量提升，可以把b提升到作用域顶部，又因为undefined是window的一个全局变量，所以`b in window`返回true，执行结果为3 undefined
