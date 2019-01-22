@@ -251,6 +251,11 @@ js传递参数:
 
 
 
+参考文献：
+1. [js 的function为什么可以添加属性](https://www.cnblogs.com/hanguidong/p/9296647.html)
+2. [阮一峰老师es6教程](http://es6.ruanyifeng.com/#docs/class#%E9%9D%99%E6%80%81%E5%B1%9E%E6%80%A7)
+3. 《JavaScript高级程序设计》第四章 4.1.3 传递参数
+
 
 
 
