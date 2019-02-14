@@ -1,5 +1,9 @@
 ## 个人笔记
 
+### 为了更好的阅读体验请点击我的博客进入博客查看
+[我的博客](https://yuhang04210.github.io/)
+
+
 
 ### css部分
 [1. css盒模型](https://github.com/yuhang04210/yuhang04210.github.io/blob/hexo/source/_posts/css%E7%9B%92%E6%A8%A1%E5%9E%8B.md)
