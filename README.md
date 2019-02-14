@@ -1,13 +1,13 @@
-个人笔记
+## 个人笔记
 
 
-### css
+### css部分
 [css盒模型](https://github.com/yuhang04210/yuhang04210.github.io/blob/hexo/source/_posts/css%E7%9B%92%E6%A8%A1%E5%9E%8B.md)
 
 [两栏布局](https://github.com/yuhang04210/yuhang04210.github.io/blob/hexo/source/_posts/%E4%B8%A4%E6%A0%8F%E5%B8%83%E5%B1%80.md)
 
 
-### javaScript
+### javaScript部分
 [DOM事件](https://github.com/yuhang04210/yuhang04210.github.io/blob/hexo/source/_posts/DOM%E4%BA%8B%E4%BB%B6.md)
 
 [ES6中class的用法](https://github.com/yuhang04210/yuhang04210.github.io/blob/hexo/source/_posts/ES6%E4%B8%ADclass%E7%9A%84%E7%94%A8%E6%B3%95.md)
