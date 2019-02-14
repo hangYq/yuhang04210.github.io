@@ -177,3 +177,90 @@ setTimeout在我们的印象中就是异步执行函数，我们经常可以这�
 
 完整输出为：1，7，6，8，2，4，3，5，9，11，10，12。
 
+
+第一轮事件循环如下：
+* 整体`script`代码作为第一个`宏任务`进入到`主线程`，遇到`console.log(1)`,输出1；
+* 遇到`setTimeout`，加入到`宏任务 Event Queue`，这里记为setTimeout1;
+* 遇到`process.nextTick`,加入到`微任务 Event Queue`，我们记为process1；
+* 遇到`new Promise`,立即执行`console.log(7)`,输出7，然后将`then`加入到`微任务 Event Queue`，我们记为then1；
+* 遇到最后一个`setTimeout`，加入到`宏任务 Event Queue`，这里记为setTimeout2;
+
+|宏任务|微任务|
+|---|---|
+|setTimeout1|process1|
+|setTimeout2|then1|
+
+
+* 上表示第一轮事件循环宏任务结束时，`宏任务Event Queue`和`微任务Event Queue`的情况，此时已经输出1,7；
+* 这时有两个微任务`process1`和`then1`；
+* 首先执行`process1`，输出6；
+* 然后执行`then1`，输出8；
+
+此时，第一轮事件循环已经结束，第一轮事件循环已经输出的值为：1,7,6,8；接下来执行第二轮事件循环，第二轮事件循环从setTimeout1开始。
+
+* `setTimeout1`中首先执行`console.log('2')`,输出2；
+* 然后将`process.nextTick`加入到`微任务 Event Queue`，这里记为process2；
+* 遇到`new Promise`,立即执行`console.log(4)`,输出4，然后将`then`加入到`微任务 Event Queue`，我们记为then2；
+
+
+此时宏任务和微任务 Event Queue 的情况如下表：
+
+|宏任务|微任务|
+|---|---|
+|setTimeout2|process2|
+||then2|
+
+* 第二轮事件循环宏任务执行结束后，已经输出的值为：2,4；
+* 然后执行`process2`和`then2`两个微任务；
+* 执行`process2`输出3；
+* 执行`then2`输出5；
+
+第二轮事件循环结束后输出2,4,3,5，下面开始第三轮事件循环，第三轮事件循环从setTimeout2开始。
+
+
+* `setTimeout2`中首先执行`console.log('9')`,输出9；
+* 然后将`process.nextTick`加入到`微任务 Event Queue`，这里记为process3；
+* 遇到`new Promise`,立即执行`console.log(11)`,输出11，然后将`then`加入到`微任务 Event Queue`，我们记为then3；
+
+此时宏任务和微任务 Event Queue 的情况如下表：
+
+|宏任务|微任务|
+|---|---|
+||process3|
+||then3|
+
+* 第三轮事件循环宏任务执行结束后，已经输出的值为：9,11；
+* 然后执行`process3`和`then3`两个微任务；
+* 执行`process3`输出10；
+* 执行`then3`输出12；
+* 最后第三轮事件循环结束后输出值为：9,11,10,12；
+
+终上所述，上面代码的最后输出值为：1,7,6,8,2,4,3,5,9,11,10,12
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
