@@ -138,5 +138,52 @@ function getMaxCount (obj) {
 
 
 
+#### 二、题目二：
+
+#### 描述： 
+
+有A、B、C三个请求，C依赖于A和B连个请求，如何实现？
+
+```js
+let getA = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve(2);
+    }, 3000);
+})
+
+
+let getB = new Promise((reolve, reject) => {
+    setTimeout(() => {
+        reolve(3);
+    }, 1000);
+})
+
+
+function getC(a, b) {
+    return a + b;
+}
+
+
+Promise.all([getA, getB]).then(data => {
+    console.log(data);
+    return getC(data[0],data[1]);
+}).then(res => {
+    console.log('res',res); // 5
+})
+```
+
+这里可以使用promise.all()来并行实现，用来提高效率。当然也可以使用async来实现，不过async是同步来执行的，可能会有一定的效率问题。
+
+#### 本题参考资料：
+
+[1. es6中的promise.all使用问题](https://segmentfault.com/q/1010000008174264)
+
+[2. ES6 Promise 并行执行和顺序执行](https://www.jianshu.com/p/dbda3053da20)
+
+[3. 阮一峰es6中promise.all的使用](http://es6.ruanyifeng.com/#docs/promise#Promise-all)
+
+
+
+
 
 
