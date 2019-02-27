@@ -238,23 +238,92 @@ setTimeout在我们的印象中就是异步执行函数，我们经常可以这�
 终上所述，上面代码的最后输出值为：1,7,6,8,2,4,3,5,9,11,10,12
 
 
+#### 五、 Js中async/await的执行顺序
+
+- async/await是一种异步编程的解决方案，之前的异步解决方案是回调和promise
+- async/await是建立在promise的基础上的
+- async/await像promise一样，也是非阻塞的
+- async让异步代码看起来更像同步代码
 
 
 
+async有返回值的情况下,async返回的是一个promise对象。
+
+```js
+async function f() {
+    console.log('async 执行了');
+    return 'hello';
+}
+
+let result = f();
+console.log('result',result);
+```
+
+输出结果为：![输出结果](/images/2019-02-27_195953.png)
+
+
+从上面的情况可以看出，async有返回值的是一个promise对象，如果在函数中return一个直接量，async会把这个直接量通过Promise.resolve()封装成一个promised对象。
 
 
 
+如果async没有返回值，则async返回的也是一个promise，他会通过promise.resolve()封装成一个promise对象，如：
+
+```js
+async function f() {
+    console.log('async 执行了');
+}
+
+let result = f();
+console.log('result',result);
+```
+
+输出结果为：![输出结果](/images/2019-02-27_200540.png)
+
+await，就是等待，等待的是一个表达式，这个表达式的返回值可以是一个promise对象，也可以是其他值。
+
+很多人以为await会一直等待之后的表达式执行完之后才会继续执行后面的代码，实际上，await是让出线程的标志。await后面的函数会先执行一遍，然后就会跳出整个async函数，来执行后面的js栈，等本轮事件循环完成了，再跳回到async函数中等待await。
+
+await后面的返回值，如果是不是一个promise对象，则继续执行async后面的代码，如果是promise对象，则将返回的promise对象放入promise队列。
 
 
 
+```js
+async function async1 () {
+    console.log('async1 start');
+    await async2();
+    console.log('async1 end');
+}
+
+async function async2() {
+    console.log('async2');
+}
 
 
+setTimeout(() => {
+    console.log('setTimeout');
+}, 0);
 
 
+console.log('start');
+async1();
+
+var promise1 = new Promise((resolve,reject) => {
+    console.log('promise start');
+    resolve('promise1');
+})
+
+promise1.then(resolve => {
+    console.log(resolve);
+})
+
+console.log('end');
+```
+输出结果为：![输出结果](/images/2019-02-27_202607.png)
 
 
+参考资料：
 
-
+[Js中async/await的执行顺序详解](https://www.jb51.net/article/124321.htm)
 
 
 
