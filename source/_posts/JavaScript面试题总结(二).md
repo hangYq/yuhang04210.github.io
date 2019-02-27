@@ -184,6 +184,47 @@ Promise.all([getA, getB]).then(data => {
 
 
 
+#### 三、写出下列输出
+
+```js
+var a = {
+    value : 1,
+    func1: function () {
+        console.log(this.value)
+    },
+    func : () => {
+        console.log(this.value);
+    }
+}
+
+a.func1(); // 1 
+a.func(); // undefined
+```
+
+
+这里主要考察了es6中的箭头函数。在a对象中，func1是一个普通函数，func是一个箭头函数，由于箭头函数使得this由动态变成静态，当我们调用a.func1()的时候this指向的为a,输出为1；在调用a.func()的时候，由于func()是一个箭头函数，使得this指向了全局对象window，window中没有value值，所以输出结果为undefined。
+
+如果我们在全局对象中添加一个变量var value = 3，则输出结果就为3。代码如下：
+
+```js
+var a = {
+    value : 1,
+    func1: function () {
+        console.log(this.value)
+    },
+    func : () => {
+        console.log(this.value);
+    }
+}
+var value = 3;
+
+
+a.func1(); // 1 
+a.func(); // 3
+```
+
+
+
 
 
 
