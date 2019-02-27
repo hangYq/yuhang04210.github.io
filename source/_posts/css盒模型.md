@@ -15,8 +15,8 @@ css盒模型分为IE盒模型和标准盒模型，以下是IE盒模型和标准�
 
 |分类|区别|box-sizing|
 |:------:|:----:|:----:|
-|IE盒模型|content不包含padding和border|border-box|
-|标准盒模型|content包含padding和border|content-box|
+|IE盒模型|content包含padding和border|border-box|
+|标准盒模型|content不包含padding和border|content-box|
 
 
 
