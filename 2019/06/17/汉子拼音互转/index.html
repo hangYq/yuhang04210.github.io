@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta name="keywords" content="前端、JavaScript、css、html、node、react">
+<meta property="og:type" content="article">
+<meta property="og:title" content="汉字转拼音">
+<meta property="og:url" content="http://yoursite.com/2019/06/17/汉子拼音互转/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-17T12:19:35.812Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="汉字转拼音">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/06/17/汉子拼音互转/">
+
+
+
+
+
+  <title>汉字转拼音 | 个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">前端知识博客</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/17/汉子拼音互转/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="喻航">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">汉字转拼音</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-17T20:18:51+08:00">
+                2019-06-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+          
+          
+            <span class="post-meta-divider">|</span>
+            <span id="busuanzi_value_page_pv"></span>次阅读
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br><span class="line">474</span><br><span class="line">475</span><br><span class="line">476</span><br><span class="line">477</span><br><span class="line">478</span><br><span class="line">479</span><br><span class="line">480</span><br><span class="line">481</span><br><span class="line">482</span><br><span class="line">483</span><br><span class="line">484</span><br><span class="line">485</span><br><span class="line">486</span><br><span class="line">487</span><br><span class="line">488</span><br><span class="line">489</span><br><span class="line">490</span><br><span class="line">491</span><br><span class="line">492</span><br><span class="line">493</span><br><span class="line">494</span><br><span class="line">495</span><br><span class="line">496</span><br><span class="line">497</span><br><span class="line">498</span><br><span class="line">499</span><br><span class="line">500</span><br><span class="line">501</span><br><span class="line">502</span><br><span class="line">503</span><br><span class="line">504</span><br><span class="line">505</span><br><span class="line">506</span><br><span class="line">507</span><br><span class="line">508</span><br><span class="line">509</span><br><span class="line">510</span><br><span class="line">511</span><br><span class="line">512</span><br><span class="line">513</span><br><span class="line">514</span><br><span class="line">515</span><br><span class="line">516</span><br><span class="line">517</span><br><span class="line">518</span><br><span class="line">519</span><br><span class="line">520</span><br><span class="line">521</span><br><span class="line">522</span><br><span class="line">523</span><br><span class="line">524</span><br><span class="line">525</span><br><span class="line">526</span><br><span class="line">527</span><br><span class="line">528</span><br><span class="line">529</span><br><span class="line">530</span><br><span class="line">531</span><br><span class="line">532</span><br><span class="line">533</span><br><span class="line">534</span><br><span class="line">535</span><br><span class="line">536</span><br><span class="line">537</span><br><span class="line">538</span><br><span class="line">539</span><br><span class="line">540</span><br><span class="line">541</span><br><span class="line">542</span><br><span class="line">543</span><br><span class="line">544</span><br><span class="line">545</span><br><span class="line">546</span><br><span class="line">547</span><br><span class="line">548</span><br><span class="line">549</span><br><span class="line">550</span><br><span class="line">551</span><br><span class="line">552</span><br><span class="line">553</span><br><span class="line">554</span><br><span class="line">555</span><br><span class="line">556</span><br><span class="line">557</span><br><span class="line">558</span><br><span class="line">559</span><br><span class="line">560</span><br><span class="line">561</span><br><span class="line">562</span><br><span class="line">563</span><br><span class="line">564</span><br><span class="line">565</span><br><span class="line">566</span><br><span class="line">567</span><br><span class="line">568</span><br><span class="line">569</span><br><span class="line">570</span><br><span class="line">571</span><br><span class="line">572</span><br><span class="line">573</span><br><span class="line">574</span><br><span class="line">575</span><br><span class="line">576</span><br><span class="line">577</span><br><span class="line">578</span><br><span class="line">579</span><br><span class="line">580</span><br><span class="line">581</span><br><span class="line">582</span><br><span class="line">583</span><br><span class="line">584</span><br><span class="line">585</span><br><span class="line">586</span><br><span class="line">587</span><br><span class="line">588</span><br><span class="line">589</span><br><span class="line">590</span><br><span class="line">591</span><br><span class="line">592</span><br><span class="line">593</span><br><span class="line">594</span><br><span class="line">595</span><br><span class="line">596</span><br><span class="line">597</span><br><span class="line">598</span><br><span class="line">599</span><br><span class="line">600</span><br><span class="line">601</span><br><span class="line">602</span><br><span class="line">603</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pinyin = &#123;</span><br><span class="line">    mfkdb: [</span><br><span class="line">        [<span class="string">"A"</span>, <span class="string">"阿啊吖嗄腌锕"</span>],</span><br><span class="line">        [<span class="string">"Ai"</span>, <span class="string">"埃挨哎唉哀皑癌蔼矮艾碍爱隘捱嗳嗌嫒瑷暧砹锿霭"</span>],</span><br><span class="line">        [<span class="string">"An"</span>, <span class="string">"鞍氨安俺按暗岸胺案谙埯揞庵桉铵鹌黯"</span>],</span><br><span class="line">        [<span class="string">"Ang"</span>, <span class="string">"肮昂盎"</span>],</span><br><span class="line">        [<span class="string">"Ao"</span>, <span class="string">"凹敖熬翱袄傲奥懊澳坳嗷岙廒遨媪骜獒聱螯鏊鳌鏖"</span>],</span><br><span class="line">        [<span class="string">"Ba"</span>, <span class="string">"芭捌扒叭吧笆八疤巴拔跋靶把耙坝霸罢爸茇菝岜灞钯粑鲅魃"</span>],</span><br><span class="line">        [<span class="string">"Bai"</span>, <span class="string">"白柏百摆佰败拜稗捭掰"</span>],</span><br><span class="line">        [<span class="string">"Ban"</span>, <span class="string">"斑班搬扳般颁板版扮拌伴瓣半办绊阪坂钣瘢癍舨"</span>],</span><br><span class="line">        [<span class="string">"Bang"</span>, <span class="string">"邦帮梆榜膀绑棒磅镑傍谤蒡浜"</span>],</span><br><span class="line">        [<span class="string">"Beng"</span>, <span class="string">"蚌崩绷甭泵蹦迸嘣甏"</span>],</span><br><span class="line">        [<span class="string">"Bao"</span>, <span class="string">"苞胞包褒薄雹保堡饱宝抱报暴豹鲍爆曝勹葆孢煲鸨褓趵龅"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Bo"</span>,</span><br><span class="line">            <span class="string">"剥玻菠播拨钵波博勃搏铂箔伯帛舶脖膊渤泊驳亳啵饽檗擘礴钹鹁簸跛踣"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Bei"</span>, <span class="string">"杯碑悲卑北辈背贝钡倍狈备惫焙被孛陂邶蓓呗悖碚鹎褙鐾鞴"</span>],</span><br><span class="line">        [<span class="string">"Ben"</span>, <span class="string">"奔苯本笨畚坌锛"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Bi"</span>,</span><br><span class="line">            <span class="string">"逼鼻比鄙笔彼碧蓖蔽毕毙毖币庇痹闭敝弊必壁臂避陛匕俾荜荸萆薜吡哔狴庳愎滗濞弼妣婢嬖璧贲睥畀铋秕裨筚箅篦舭襞跸髀"</span></span><br><span class="line">        ],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Pi"</span>,</span><br><span class="line">            <span class="string">"辟坯砒霹批披劈琵毗啤脾疲皮匹痞僻屁譬丕仳陴邳郫圮埤鼙芘擗噼庀淠媲纰枇甓罴铍癖疋蚍蜱貔"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Bian"</span>, <span class="string">"鞭边编贬扁便变卞辨辩辫遍匾弁苄忭汴缏煸砭碥窆褊蝙笾鳊"</span>],</span><br><span class="line">        [<span class="string">"Biao"</span>, <span class="string">"标彪膘表婊骠飑飙飚镖镳瘭裱鳔"</span>],</span><br><span class="line">        [<span class="string">"Bie"</span>, <span class="string">"鳖憋别瘪蹩"</span>],</span><br><span class="line">        [<span class="string">"Bin"</span>, <span class="string">"彬斌濒滨宾摈傧豳缤玢槟殡膑镔髌鬓"</span>],</span><br><span class="line">        [<span class="string">"Bing"</span>, <span class="string">"兵冰柄丙秉饼炳病并禀邴摒"</span>],</span><br><span class="line">        [<span class="string">"Bu"</span>, <span class="string">"捕卜哺补埠不布步簿部怖卟逋瓿晡钚钸醭"</span>],</span><br><span class="line">        [<span class="string">"Ca"</span>, <span class="string">"擦嚓礤"</span>],</span><br><span class="line">        [<span class="string">"Cai"</span>, <span class="string">"猜裁材才财睬踩采彩菜蔡"</span>],</span><br><span class="line">        [<span class="string">"Can"</span>, <span class="string">"餐参蚕残惭惨灿骖璨粲黪"</span>],</span><br><span class="line">        [<span class="string">"Cang"</span>, <span class="string">"苍舱仓沧藏伧"</span>],</span><br><span class="line">        [<span class="string">"Cao"</span>, <span class="string">"操糙槽曹草嘈漕螬艚"</span>],</span><br><span class="line">        [<span class="string">"Ce"</span>, <span class="string">"厕策侧册测恻"</span>],</span><br><span class="line">        [<span class="string">"Ceng"</span>, <span class="string">"层蹭曾噌"</span>],</span><br><span class="line">        [<span class="string">"Cha"</span>, <span class="string">"插叉茬茶查碴搽察岔诧猹馇汊姹杈槎檫锸镲衩"</span>],</span><br><span class="line">        [<span class="string">"Chai"</span>, <span class="string">"差拆柴豺侪钗瘥虿"</span>],</span><br><span class="line">        [<span class="string">"Chan"</span>, <span class="string">"搀掺蝉馋谗缠铲产阐颤冁谄蒇廛忏潺澶孱羼婵骣觇禅蟾躔"</span>],</span><br><span class="line">        [<span class="string">"Chang"</span>, <span class="string">"昌猖场尝常长偿肠厂敞畅唱倡伥鬯苌菖徜怅惝阊娼嫦昶氅鲳"</span>],</span><br><span class="line">        [<span class="string">"Chao"</span>, <span class="string">"超抄钞朝嘲潮巢吵炒怊晁焯耖"</span>],</span><br><span class="line">        [<span class="string">"Che"</span>, <span class="string">"车扯撤掣彻澈坼砗"</span>],</span><br><span class="line">        [<span class="string">"Chen"</span>, <span class="string">"郴臣辰尘晨忱沉陈趁衬谌谶抻嗔宸琛榇碜龀"</span>],</span><br><span class="line">        [<span class="string">"Cheng"</span>, <span class="string">"撑称城橙成呈乘程惩澄诚承逞骋秤丞埕枨柽塍瞠铖铛裎蛏酲"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Chi"</span>,</span><br><span class="line">            <span class="string">"吃痴持池迟弛驰耻齿侈尺赤翅斥炽傺墀茌叱哧啻嗤彳饬媸敕眵鸱瘛褫蚩螭笞篪豉踟魑"</span></span><br><span class="line">        ],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Shi"</span>,</span><br><span class="line">            <span class="string">"匙师失狮施湿诗尸虱十石拾时食蚀实识史矢使屎驶始式示士世柿事拭誓逝势是嗜噬适仕侍释饰氏市恃室视试谥埘莳蓍弑轼贳炻礻铈舐筮豕鲥鲺"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Chong"</span>, <span class="string">"充冲虫崇宠重茺忡憧铳舂艟"</span>],</span><br><span class="line">        [<span class="string">"Chou"</span>, <span class="string">"抽酬畴踌稠愁筹仇绸瞅丑臭俦帱惆瘳雠"</span>],</span><br><span class="line">        [<span class="string">"Chu"</span>, <span class="string">"初出橱厨躇锄雏滁除楚础储矗搐触处亍刍怵憷绌杵楮樗褚蜍蹰黜"</span>],</span><br><span class="line">        [<span class="string">"Chuai"</span>, <span class="string">"揣搋嘬膪踹"</span>],</span><br><span class="line">        [<span class="string">"Chuan"</span>, <span class="string">"川穿椽传船喘串舛遄氚钏舡"</span>],</span><br><span class="line">        [<span class="string">"Chuang"</span>, <span class="string">"疮窗床闯创怆"</span>],</span><br><span class="line">        [<span class="string">"Zhuang"</span>, <span class="string">"幢桩庄装妆撞壮状僮"</span>],</span><br><span class="line">        [<span class="string">"Chui"</span>, <span class="string">"吹炊捶锤垂陲棰槌"</span>],</span><br><span class="line">        [<span class="string">"Chun"</span>, <span class="string">"春椿醇唇淳纯蠢莼鹑蝽"</span>],</span><br><span class="line">        [<span class="string">"Chuo"</span>, <span class="string">"戳绰啜辍踔龊"</span>],</span><br><span class="line">        [<span class="string">"Ci"</span>, <span class="string">"疵茨磁雌辞慈瓷词此刺赐次茈祠鹚糍"</span>],</span><br><span class="line">        [<span class="string">"Cong"</span>, <span class="string">"聪葱囱匆从丛苁淙骢琮璁枞"</span>],</span><br><span class="line">        [<span class="string">"Cou"</span>, <span class="string">"凑楱辏腠"</span>],</span><br><span class="line">        [<span class="string">"Cu"</span>, <span class="string">"粗醋簇促卒蔟徂猝殂酢蹙蹴"</span>],</span><br><span class="line">        [<span class="string">"Cuan"</span>, <span class="string">"蹿篡窜汆撺爨镩"</span>],</span><br><span class="line">        [<span class="string">"Cui"</span>, <span class="string">"摧崔催脆瘁粹淬翠萃啐悴璀榱毳"</span>],</span><br><span class="line">        [<span class="string">"Cun"</span>, <span class="string">"村存寸忖皴"</span>],</span><br><span class="line">        [<span class="string">"Cuo"</span>, <span class="string">"磋撮搓措挫错厝嵯脞锉矬痤鹾蹉"</span>],</span><br><span class="line">        [<span class="string">"Da"</span>, <span class="string">"搭达答瘩打大耷哒怛妲褡笪靼鞑"</span>],</span><br><span class="line">        [<span class="string">"Dai"</span>, <span class="string">"呆歹傣戴带殆代贷袋待逮怠埭甙呔岱迨绐玳黛"</span>],</span><br><span class="line">        [<span class="string">"Dan"</span>, <span class="string">"耽担丹单郸掸胆旦氮但惮淡诞蛋儋凼萏菪啖澹宕殚赕眈疸瘅聃箪"</span>],</span><br><span class="line">        [<span class="string">"Tan"</span>, <span class="string">"弹坍摊贪瘫滩坛檀痰潭谭谈坦毯袒碳探叹炭郯昙忐钽锬覃"</span>],</span><br><span class="line">        [<span class="string">"Dang"</span>, <span class="string">"当挡党荡档谠砀裆"</span>],</span><br><span class="line">        [<span class="string">"Dao"</span>, <span class="string">"刀捣蹈倒岛祷导到稻悼道盗叨氘焘纛"</span>],</span><br><span class="line">        [<span class="string">"De"</span>, <span class="string">"德得的锝"</span>],</span><br><span class="line">        [<span class="string">"Deng"</span>, <span class="string">"蹬灯登等瞪凳邓噔嶝戥磴镫簦"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Di"</span>,</span><br><span class="line">            <span class="string">"堤低滴迪敌笛狄涤嫡抵底地蒂第帝弟递缔氐籴诋谛邸坻荻嘀娣柢棣觌祗砥碲睇镝羝骶"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Zhai"</span>, <span class="string">"翟摘斋宅窄债寨砦瘵"</span>],</span><br><span class="line">        [<span class="string">"Dian"</span>, <span class="string">"颠掂滇碘点典靛垫电佃甸店惦奠淀殿丶阽坫巅玷钿癜癫簟踮"</span>],</span><br><span class="line">        [<span class="string">"Diao"</span>, <span class="string">"碉叼雕凋刁掉吊钓铞貂鲷"</span>],</span><br><span class="line">        [<span class="string">"Tiao"</span>, <span class="string">"调挑条迢眺跳佻苕祧窕蜩笤粜龆鲦髫"</span>],</span><br><span class="line">        [<span class="string">"Die"</span>, <span class="string">"跌爹碟蝶迭谍叠垤堞喋牒瓞耋鲽"</span>],</span><br><span class="line">        [<span class="string">"Ding"</span>, <span class="string">"丁盯叮钉顶鼎锭定订仃啶玎腚碇町疔耵酊"</span>],</span><br><span class="line">        [<span class="string">"Diu"</span>, <span class="string">"丢铥"</span>],</span><br><span class="line">        [<span class="string">"Dong"</span>, <span class="string">"东冬董懂动栋侗恫冻洞垌咚岽峒氡胨胴硐鸫"</span>],</span><br><span class="line">        [<span class="string">"Dou"</span>, <span class="string">"兜抖斗陡豆逗痘蔸钭窦蚪篼"</span>],</span><br><span class="line">        [<span class="string">"Du"</span>, <span class="string">"都督毒犊独读堵睹赌杜镀肚度渡妒芏嘟渎椟牍蠹笃髑黩"</span>],</span><br><span class="line">        [<span class="string">"Duan"</span>, <span class="string">"端短锻段断缎椴煅簖"</span>],</span><br><span class="line">        [<span class="string">"Dui"</span>, <span class="string">"堆兑队对怼憝碓镦"</span>],</span><br><span class="line">        [<span class="string">"Dun"</span>, <span class="string">"墩吨蹲敦顿钝盾遁沌炖砘礅盹趸"</span>],</span><br><span class="line">        [<span class="string">"Tun"</span>, <span class="string">"囤吞屯臀氽饨暾豚"</span>],</span><br><span class="line">        [<span class="string">"Duo"</span>, <span class="string">"掇哆多夺垛躲朵跺舵剁惰堕咄哚沲缍铎裰踱"</span>],</span><br><span class="line">        [<span class="string">"E"</span>, <span class="string">"蛾峨鹅俄额讹娥恶厄扼遏鄂饿噩谔垩苊莪萼呃愕屙婀轭腭锇锷鹗颚鳄"</span>],</span><br><span class="line">        [<span class="string">"En"</span>, <span class="string">"恩蒽摁嗯"</span>],</span><br><span class="line">        [<span class="string">"Er"</span>, <span class="string">"而儿耳尔饵洱二贰迩珥铒鸸鲕"</span>],</span><br><span class="line">        [<span class="string">"Fa"</span>, <span class="string">"发罚筏伐乏阀法珐垡砝"</span>],</span><br><span class="line">        [<span class="string">"Fan"</span>, <span class="string">"藩帆番翻樊矾钒繁凡烦反返范贩犯饭泛蕃蘩幡夂梵燔畈蹯"</span>],</span><br><span class="line">        [<span class="string">"Fang"</span>, <span class="string">"坊芳方肪房防妨仿访纺放邡枋钫舫鲂"</span>],</span><br><span class="line">        [<span class="string">"Fei"</span>, <span class="string">"菲非啡飞肥匪诽吠肺废沸费狒悱淝妃绯榧腓斐扉砩镄痱蜚篚翡霏鲱"</span>],</span><br><span class="line">        [<span class="string">"Fen"</span>, <span class="string">"芬酚吩氛分纷坟焚汾粉奋份忿愤粪偾瀵棼鲼鼢"</span>],</span><br><span class="line">        [<span class="string">"Feng"</span>, <span class="string">"丰封枫蜂峰锋风疯烽逢冯缝讽奉凤俸酆葑唪沣砜"</span>],</span><br><span class="line">        [<span class="string">"Fo"</span>, <span class="string">"佛"</span>],</span><br><span class="line">        [<span class="string">"Fou"</span>, <span class="string">"否缶"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Fu"</span>,</span><br><span class="line">            <span class="string">"夫敷肤孵扶拂辐幅氟符伏俘服浮涪福袱弗甫抚辅俯釜斧脯腑府腐赴副覆赋复傅付阜父腹负富讣附妇缚咐匐凫郛芙芾苻茯莩菔拊呋呒幞怫滏艴孚驸绂绋桴赙祓黻黼罘稃馥蚨蜉蝠蝮麸趺跗鲋鳆"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Ga"</span>, <span class="string">"噶嘎垓尬尕尜旮钆"</span>],</span><br><span class="line">        [<span class="string">"Gai"</span>, <span class="string">"该改概钙盖溉丐陔戤赅"</span>],</span><br><span class="line">        [<span class="string">"Gan"</span>, <span class="string">"干甘杆柑竿肝赶感秆敢赣坩苷尴擀泔淦澉绀橄旰矸疳酐"</span>],</span><br><span class="line">        [<span class="string">"Gang"</span>, <span class="string">"冈刚钢缸肛纲岗港杠戆罡筻"</span>],</span><br><span class="line">        [<span class="string">"Gao"</span>, <span class="string">"篙皋高膏羔糕搞镐稿告睾诰郜藁缟槔槁杲锆"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Ge"</span>,</span><br><span class="line">            <span class="string">"哥歌搁戈鸽胳疙割革葛格阁隔铬个各鬲仡哿圪塥嗝纥搿膈硌镉袼虼舸骼"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Ha"</span>, <span class="string">"蛤哈铪"</span>],</span><br><span class="line">        [<span class="string">"Gei"</span>, <span class="string">"给"</span>],</span><br><span class="line">        [<span class="string">"Gen"</span>, <span class="string">"根跟亘茛哏艮"</span>],</span><br><span class="line">        [<span class="string">"Geng"</span>, <span class="string">"耕更庚羹埂耿梗哽赓绠鲠"</span>],</span><br><span class="line">        [<span class="string">"Gong"</span>, <span class="string">"工攻功恭龚供躬公宫弓巩汞拱贡共珙肱蚣觥"</span>],</span><br><span class="line">        [<span class="string">"Gou"</span>, <span class="string">"钩勾沟苟狗垢构购够佝诟岣遘媾缑枸觏彀笱篝鞲"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Gu"</span>,</span><br><span class="line">            <span class="string">"辜菇咕箍估沽孤姑鼓古蛊骨谷股故顾固雇嘏诂菰崮汩梏轱牯牿臌毂瞽罟钴锢鸪痼蛄酤觚鲴"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Gua"</span>, <span class="string">"刮瓜剐寡挂褂卦诖呱栝胍鸹"</span>],</span><br><span class="line">        [<span class="string">"Guai"</span>, <span class="string">"乖拐怪掴"</span>],</span><br><span class="line">        [<span class="string">"Guan"</span>, <span class="string">"棺关官冠观管馆罐惯灌贯倌莞掼涫盥鹳鳏"</span>],</span><br><span class="line">        [<span class="string">"Guang"</span>, <span class="string">"光广逛咣犷桄胱"</span>],</span><br><span class="line">        [<span class="string">"Gui"</span>, <span class="string">"瑰规圭硅归龟闺轨鬼诡癸桂柜跪贵刽匦刿庋宄妫桧炅晷皈簋鲑鳜"</span>],</span><br><span class="line">        [<span class="string">"Gun"</span>, <span class="string">"辊滚棍衮绲磙鲧"</span>],</span><br><span class="line">        [<span class="string">"Guo"</span>, <span class="string">"锅郭国果裹过馘埚呙帼崞猓椁虢聒蜾蝈"</span>],</span><br><span class="line">        [<span class="string">"Hai"</span>, <span class="string">"骸孩海氦亥害骇嗨胲醢"</span>],</span><br><span class="line">        [<span class="string">"Han"</span>, <span class="string">"酣憨邯韩含涵寒函喊罕翰撼捍旱憾悍焊汗汉邗菡撖犴瀚晗焓顸颔蚶鼾"</span>],</span><br><span class="line">        [<span class="string">"Hang"</span>, <span class="string">"夯杭航行沆绗颃"</span>],</span><br><span class="line">        [<span class="string">"Hao"</span>, <span class="string">"壕嚎豪毫郝好耗号浩貉蒿薅嗥嚆濠灏昊皓颢蚝"</span>],</span><br><span class="line">        [<span class="string">"He"</span>, <span class="string">"呵喝荷菏核禾和何合盒阂河涸赫褐鹤贺诃劾壑嗬阖曷盍颌蚵翮"</span>],</span><br><span class="line">        [<span class="string">"Hei"</span>, <span class="string">"嘿黑"</span>],</span><br><span class="line">        [<span class="string">"Hen"</span>, <span class="string">"痕很狠恨"</span>],</span><br><span class="line">        [<span class="string">"Heng"</span>, <span class="string">"哼亨横衡恒蘅珩桁"</span>],</span><br><span class="line">        [<span class="string">"Hong"</span>, <span class="string">"轰哄烘虹鸿洪宏弘红黉訇讧荭蕻薨闳泓"</span>],</span><br><span class="line">        [<span class="string">"Hou"</span>, <span class="string">"喉侯猴吼厚候后堠後逅瘊篌糇鲎骺"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Hu"</span>,</span><br><span class="line">            <span class="string">"呼乎忽瑚壶葫胡蝴狐糊湖弧虎唬护互沪户冱唿囫岵猢怙惚浒滹琥槲轷觳烀煳戽扈祜瓠鹄鹕鹱笏醐斛鹘"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Hua"</span>, <span class="string">"花哗华猾滑画划化话骅桦砉铧"</span>],</span><br><span class="line">        [<span class="string">"Huai"</span>, <span class="string">"槐徊怀淮坏踝"</span>],</span><br><span class="line">        [<span class="string">"Huan"</span>, <span class="string">"欢环桓还缓换患唤痪豢焕涣宦幻奂擐圜獾洹浣漶寰逭缳锾鲩鬟"</span>],</span><br><span class="line">        [<span class="string">"Huang"</span>, <span class="string">"荒慌黄磺蝗簧皇凰惶煌晃幌恍谎隍徨湟潢遑璜肓癀蟥篁鳇"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Hui"</span>,</span><br><span class="line">            <span class="string">"灰挥辉徽恢蛔回毁悔慧卉惠晦贿秽会烩汇讳诲绘诙茴荟蕙咴喙隳洄彗缋珲晖恚虺蟪麾"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Hun"</span>, <span class="string">"荤昏婚魂浑混诨馄阍溷"</span>],</span><br><span class="line">        [<span class="string">"Huo"</span>, <span class="string">"豁活伙火获或惑霍货祸劐藿攉嚯夥钬锪镬耠蠖"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Ji"</span>,</span><br><span class="line">            <span class="string">"击圾基机畸稽积箕肌饥迹激讥鸡姬绩缉吉极棘辑籍集及急疾汲即嫉级挤几脊己蓟技冀季伎祭剂悸济寄寂计记既忌际妓继纪藉亟乩剞佶偈墼芨芰荠蒺蕺掎叽咭哜唧岌嵴洎屐骥畿玑楫殛戟戢赍觊犄齑矶羁嵇稷瘠虮笈笄暨跻跽霁鲚鲫髻"</span></span><br><span class="line">        ],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Jia"</span>,</span><br><span class="line">            <span class="string">"嘉枷夹佳家加荚颊贾甲钾假稼价架驾嫁伽郏葭岬浃迦珈戛胛恝铗镓痂瘕蛱笳袈跏"</span></span><br><span class="line">        ],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Jian"</span>,</span><br><span class="line">            <span class="string">"歼监坚尖笺间煎兼肩艰奸缄茧检柬碱硷拣捡简俭剪减荐槛鉴践贱见键箭件健舰剑饯渐溅涧建僭谏谫菅蒹搛湔蹇謇缣枧楗戋戬牮犍毽腱睑锏鹣裥笕翦踺鲣鞯"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Jiang"</span>, <span class="string">"僵姜将浆江疆蒋桨奖讲匠酱降茳洚绛缰犟礓耩糨豇"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Jiao"</span>,</span><br><span class="line">            <span class="string">"蕉椒礁焦胶交郊浇骄娇搅铰矫侥脚狡角饺缴绞剿教酵轿较叫窖佼僬艽茭挢噍峤徼姣敫皎鹪蛟醮跤鲛"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Jue"</span>, <span class="string">"嚼撅攫抉掘倔爵觉决诀绝厥劂谲矍蕨噘崛獗孓珏桷橛爝镢蹶觖"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Jie"</span>,</span><br><span class="line">            <span class="string">"揭接皆秸街阶截劫节桔杰捷睫竭洁结解姐戒芥界借介疥诫届讦诘拮喈嗟婕孑桀碣疖颉蚧羯鲒骱"</span></span><br><span class="line">        ],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Jin"</span>,</span><br><span class="line">            <span class="string">"巾筋斤金今津襟紧锦仅谨进靳晋禁近烬浸尽劲卺荩堇噤馑廑妗缙瑾槿赆觐衿矜"</span></span><br><span class="line">        ],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Jing"</span>,</span><br><span class="line">            <span class="string">"荆兢茎睛晶鲸京惊精粳经井警景颈静境敬镜径痉靖竟竞净刭儆阱菁獍憬泾迳弪婧肼胫腈旌箐"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Jiong"</span>, <span class="string">"炯窘迥扃"</span>],</span><br><span class="line">        [<span class="string">"Jiu"</span>, <span class="string">"揪究纠玖韭久灸九酒厩救旧臼舅咎就疚僦啾阄柩桕鸠鹫赳鬏"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Ju"</span>,</span><br><span class="line">            <span class="string">"鞠拘狙疽居驹菊局咀矩举沮聚拒据巨具距踞锯俱句惧炬剧倨讵苣苴莒掬遽屦琚椐榘榉橘犋飓钜锔窭裾醵踽龃雎鞫"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Juan"</span>, <span class="string">"捐鹃娟倦眷卷绢鄄狷涓桊蠲锩镌隽"</span>],</span><br><span class="line">        [<span class="string">"Jun"</span>, <span class="string">"均菌钧军君峻俊竣浚郡骏捃皲筠麇"</span>],</span><br><span class="line">        [<span class="string">"Ka"</span>, <span class="string">"喀咖卡佧咔胩"</span>],</span><br><span class="line">        [<span class="string">"Luo"</span>, <span class="string">"咯萝螺罗逻锣箩骡裸落洛骆络倮蠃荦摞猡泺漯珞椤脶镙瘰雒"</span>],</span><br><span class="line">        [<span class="string">"Kai"</span>, <span class="string">"开揩楷凯慨剀垲蒈忾恺铠锎锴"</span>],</span><br><span class="line">        [<span class="string">"Kan"</span>, <span class="string">"刊堪勘坎砍看侃莰阚戡龛瞰"</span>],</span><br><span class="line">        [<span class="string">"Kang"</span>, <span class="string">"康慷糠扛抗亢炕伉闶钪"</span>],</span><br><span class="line">        [<span class="string">"Kao"</span>, <span class="string">"考拷烤靠尻栲犒铐"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Ke"</span>,</span><br><span class="line">            <span class="string">"坷苛柯棵磕颗科壳咳可渴克刻客课嗑岢恪溘骒缂珂轲氪瞌钶锞稞疴窠颏蝌髁"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Ken"</span>, <span class="string">"肯啃垦恳裉"</span>],</span><br><span class="line">        [<span class="string">"Keng"</span>, <span class="string">"坑吭铿"</span>],</span><br><span class="line">        [<span class="string">"Kong"</span>, <span class="string">"空恐孔控倥崆箜"</span>],</span><br><span class="line">        [<span class="string">"Kou"</span>, <span class="string">"抠口扣寇芤蔻叩囗眍筘"</span>],</span><br><span class="line">        [<span class="string">"Ku"</span>, <span class="string">"枯哭窟苦酷库裤刳堀喾绔骷"</span>],</span><br><span class="line">        [<span class="string">"Kua"</span>, <span class="string">"夸垮挎跨胯侉"</span>],</span><br><span class="line">        [<span class="string">"Kuai"</span>, <span class="string">"块筷侩快蒯郐哙狯浍脍"</span>],</span><br><span class="line">        [<span class="string">"Kuan"</span>, <span class="string">"宽款髋"</span>],</span><br><span class="line">        [<span class="string">"Kuang"</span>, <span class="string">"匡筐狂框矿眶旷况诓诳邝圹夼哐纩贶"</span>],</span><br><span class="line">        [<span class="string">"Kui"</span>, <span class="string">"亏盔岿窥葵奎魁傀馈愧溃馗匮夔隗蒉揆喹喟悝愦逵暌睽聩蝰篑跬"</span>],</span><br><span class="line">        [<span class="string">"Kun"</span>, <span class="string">"坤昆捆困悃阃琨锟醌鲲髡"</span>],</span><br><span class="line">        [<span class="string">"Kuo"</span>, <span class="string">"括扩廓阔蛞"</span>],</span><br><span class="line">        [<span class="string">"La"</span>, <span class="string">"垃拉喇蜡腊辣啦剌邋旯砬瘌"</span>],</span><br><span class="line">        [<span class="string">"Lai"</span>, <span class="string">"莱来赖崃徕涞濑赉睐铼癞籁"</span>],</span><br><span class="line">        [<span class="string">"Lan"</span>, <span class="string">"蓝婪栏拦篮阑兰澜谰揽览懒缆烂滥岚漤榄斓罱镧褴"</span>],</span><br><span class="line">        [<span class="string">"Lang"</span>, <span class="string">"琅榔狼廊郎朗浪蒗啷阆稂螂"</span>],</span><br><span class="line">        [<span class="string">"Lao"</span>, <span class="string">"捞劳牢老佬姥酪烙涝唠崂忉栳铑铹痨耢醪"</span>],</span><br><span class="line">        [<span class="string">"Le"</span>, <span class="string">"勒了仂叻泐鳓"</span>],</span><br><span class="line">        [<span class="string">"Yue"</span>, <span class="string">"乐曰约越跃岳粤月悦阅龠哕瀹樾刖钺"</span>],</span><br><span class="line">        [<span class="string">"Lei"</span>, <span class="string">"雷镭蕾磊累儡垒擂肋类泪羸诔嘞嫘缧檑耒酹"</span>],</span><br><span class="line">        [<span class="string">"Leng"</span>, <span class="string">"棱楞冷塄愣"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Li"</span>,</span><br><span class="line">            <span class="string">"厘梨犁黎篱狸离漓理李里鲤礼莉荔吏栗丽厉励砾历利傈例俐痢立粒沥隶力璃哩俪俚郦坜苈莅蓠藜呖唳喱猁溧澧逦娌嫠骊缡枥栎轹膦戾砺詈罹锂鹂疠疬蛎蜊蠡笠篥粝醴跞雳鲡鳢黧"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Lia"</span>, <span class="string">"俩"</span>],</span><br><span class="line">        [<span class="string">"Lian"</span>, <span class="string">"联莲连镰廉怜涟帘敛脸链恋炼练蔹奁潋濂琏楝殓臁裢裣蠊鲢"</span>],</span><br><span class="line">        [<span class="string">"Liang"</span>, <span class="string">"粮凉梁粱良两辆量晾亮谅墚莨椋锒踉靓魉"</span>],</span><br><span class="line">        [<span class="string">"Liao"</span>, <span class="string">"撩聊僚疗燎寥辽潦撂镣廖料蓼尥嘹獠寮缭钌鹩"</span>],</span><br><span class="line">        [<span class="string">"Lie"</span>, <span class="string">"列裂烈劣猎冽埒捩咧洌趔躐鬣"</span>],</span><br><span class="line">        [<span class="string">"Lin"</span>, <span class="string">"琳林磷霖临邻鳞淋凛赁吝拎蔺啉嶙廪懔遴檩辚瞵粼躏麟"</span>],</span><br><span class="line">        [<span class="string">"Ling"</span>, <span class="string">"玲菱零龄铃伶羚凌灵陵岭领另令酃苓呤囹泠绫柃棂瓴聆蛉翎鲮"</span>],</span><br><span class="line">        [<span class="string">"Liu"</span>, <span class="string">"溜琉榴硫馏留刘瘤流柳六浏遛骝绺旒熘锍镏鹨鎏"</span>],</span><br><span class="line">        [<span class="string">"Long"</span>, <span class="string">"龙聋咙笼窿隆垄拢陇垅茏珑栊胧砻癃"</span>],</span><br><span class="line">        [<span class="string">"Lou"</span>, <span class="string">"楼娄搂篓漏陋偻蒌喽嵝镂瘘耧蝼髅"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Lu"</span>,</span><br><span class="line">            <span class="string">"芦卢颅庐炉掳卤虏鲁麓碌露路赂鹿潞禄录陆戮垆撸噜泸渌漉逯璐栌橹轳辂辘氇胪镥鸬鹭簏舻鲈"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Lv"</span>, <span class="string">"驴吕铝侣旅履屡缕虑氯律率滤绿捋闾榈膂稆褛"</span>],</span><br><span class="line">        [<span class="string">"Luan"</span>, <span class="string">"峦挛孪滦卵乱脔娈栾鸾銮"</span>],</span><br><span class="line">        [<span class="string">"Lue"</span>, <span class="string">"掠略锊"</span>],</span><br><span class="line">        [<span class="string">"Lun"</span>, <span class="string">"抡轮伦仑沦纶论囵"</span>],</span><br><span class="line">        [<span class="string">"Ma"</span>, <span class="string">"妈麻玛码蚂马骂嘛吗唛犸杩蟆"</span>],</span><br><span class="line">        [<span class="string">"Mai"</span>, <span class="string">"埋买麦卖迈脉劢荬霾"</span>],</span><br><span class="line">        [<span class="string">"Man"</span>, <span class="string">"瞒馒蛮满蔓曼慢漫谩墁幔缦熳镘颟螨鳗鞔"</span>],</span><br><span class="line">        [<span class="string">"Mang"</span>, <span class="string">"芒茫盲氓忙莽邙漭硭蟒"</span>],</span><br><span class="line">        [<span class="string">"Mao"</span>, <span class="string">"猫茅锚毛矛铆卯茂冒帽貌贸袤茆峁泖瑁昴牦耄旄懋瞀蝥蟊髦"</span>],</span><br><span class="line">        [<span class="string">"Me"</span>, <span class="string">"么麽"</span>],</span><br><span class="line">        [<span class="string">"Mei"</span>, <span class="string">"玫枚梅酶霉煤眉媒镁每美昧寐妹媚莓嵋猸浼湄楣镅鹛袂魅"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Mo"</span>,</span><br><span class="line">            <span class="string">"没摸摹蘑模膜磨摩魔抹末莫墨默沫漠寞陌谟茉蓦馍嫫嬷殁镆秣瘼耱貊貘"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Men"</span>, <span class="string">"门闷们扪焖懑钔"</span>],</span><br><span class="line">        [<span class="string">"Meng"</span>, <span class="string">"萌蒙檬盟锰猛梦孟勐甍瞢懵朦礞虻蜢蠓艋艨"</span>],</span><br><span class="line">        [<span class="string">"Mi"</span>, <span class="string">"眯醚靡糜迷谜弥米秘觅泌蜜密幂芈谧咪嘧猕汨宓弭脒祢敉縻麋"</span>],</span><br><span class="line">        [<span class="string">"Mian"</span>, <span class="string">"棉眠绵冕免勉娩缅面沔渑湎腼眄"</span>],</span><br><span class="line">        [<span class="string">"Miao"</span>, <span class="string">"苗描瞄藐秒渺庙妙喵邈缈杪淼眇鹋"</span>],</span><br><span class="line">        [<span class="string">"Mie"</span>, <span class="string">"蔑灭乜咩蠛篾"</span>],</span><br><span class="line">        [<span class="string">"Min"</span>, <span class="string">"民抿皿敏悯闽苠岷闵泯缗玟珉愍黾鳘"</span>],</span><br><span class="line">        [<span class="string">"Ming"</span>, <span class="string">"明螟鸣铭名命冥茗溟暝瞑酩"</span>],</span><br><span class="line">        [<span class="string">"Miu"</span>, <span class="string">"谬缪"</span>],</span><br><span class="line">        [<span class="string">"Mou"</span>, <span class="string">"谋牟某侔哞眸蛑鍪"</span>],</span><br><span class="line">        [<span class="string">"Mu"</span>, <span class="string">"拇牡亩姆母墓暮幕募慕木目睦牧穆仫坶苜沐毪钼"</span>],</span><br><span class="line">        [<span class="string">"Na"</span>, <span class="string">"拿哪呐钠那娜纳讷捺肭镎衲"</span>],</span><br><span class="line">        [<span class="string">"Nai"</span>, <span class="string">"氖乃奶耐奈鼐佴艿萘柰"</span>],</span><br><span class="line">        [<span class="string">"Nan"</span>, <span class="string">"南男难喃囝囡楠腩蝻赧"</span>],</span><br><span class="line">        [<span class="string">"Nang"</span>, <span class="string">"囊攮囔馕曩"</span>],</span><br><span class="line">        [<span class="string">"Nao"</span>, <span class="string">"挠脑恼闹淖孬垴呶猱瑙硇铙蛲"</span>],</span><br><span class="line">        [<span class="string">"Ne"</span>, <span class="string">"呢"</span>],</span><br><span class="line">        [<span class="string">"Nei"</span>, <span class="string">"馁内"</span>],</span><br><span class="line">        [<span class="string">"Nen"</span>, <span class="string">"嫩恁"</span>],</span><br><span class="line">        [<span class="string">"Neng"</span>, <span class="string">"能"</span>],</span><br><span class="line">        [<span class="string">"Ni"</span>, <span class="string">"妮霓倪泥尼拟你匿腻逆溺伲坭蘼猊怩昵旎睨铌鲵"</span>],</span><br><span class="line">        [<span class="string">"Nian"</span>, <span class="string">"蔫拈年碾撵捻念廿埝辇黏鲇鲶"</span>],</span><br><span class="line">        [<span class="string">"Niang"</span>, <span class="string">"娘酿"</span>],</span><br><span class="line">        [<span class="string">"Niao"</span>, <span class="string">"鸟尿茑嬲脲袅"</span>],</span><br><span class="line">        [<span class="string">"Nie"</span>, <span class="string">"捏聂孽啮镊镍涅陧蘖嗫颞臬蹑"</span>],</span><br><span class="line">        [<span class="string">"Nin"</span>, <span class="string">"您"</span>],</span><br><span class="line">        [<span class="string">"Ning"</span>, <span class="string">"柠狞凝宁拧泞佞咛甯聍"</span>],</span><br><span class="line">        [<span class="string">"Niu"</span>, <span class="string">"牛扭钮纽拗狃忸妞"</span>],</span><br><span class="line">        [<span class="string">"Nong"</span>, <span class="string">"脓浓农弄侬哝"</span>],</span><br><span class="line">        [<span class="string">"Nu"</span>, <span class="string">"奴努怒弩胬孥驽"</span>],</span><br><span class="line">        [<span class="string">"Nv"</span>, <span class="string">"女恧钕衄"</span>],</span><br><span class="line">        [<span class="string">"Nuan"</span>, <span class="string">"暖"</span>],</span><br><span class="line">        [<span class="string">"Nue"</span>, <span class="string">"虐疟挪"</span>],</span><br><span class="line">        [<span class="string">"Nuo"</span>, <span class="string">"懦糯诺傩搦喏锘"</span>],</span><br><span class="line">        [<span class="string">"O"</span>, <span class="string">"哦噢"</span>],</span><br><span class="line">        [<span class="string">"Ou"</span>, <span class="string">"欧鸥殴藕呕偶沤讴怄瓯耦"</span>],</span><br><span class="line">        [<span class="string">"Pa"</span>, <span class="string">"啪趴爬帕怕琶葩杷筢"</span>],</span><br><span class="line">        [<span class="string">"Pai"</span>, <span class="string">"拍排牌徘湃派俳蒎哌"</span>],</span><br><span class="line">        [<span class="string">"Pan"</span>, <span class="string">"攀潘盘磐盼畔判叛拚爿泮袢襻蟠蹒"</span>],</span><br><span class="line">        [<span class="string">"Pang"</span>, <span class="string">"乓庞旁耪胖彷滂逄螃"</span>],</span><br><span class="line">        [<span class="string">"Pao"</span>, <span class="string">"抛咆刨炮袍跑泡匏狍庖脬疱"</span>],</span><br><span class="line">        [<span class="string">"Pei"</span>, <span class="string">"呸胚培裴赔陪配佩沛辔帔旆锫醅霈"</span>],</span><br><span class="line">        [<span class="string">"Pen"</span>, <span class="string">"喷盆湓"</span>],</span><br><span class="line">        [<span class="string">"Peng"</span>, <span class="string">"砰抨烹澎彭蓬棚硼篷膨朋鹏捧碰堋嘭怦蟛"</span>],</span><br><span class="line">        [<span class="string">"Pian"</span>, <span class="string">"篇偏片骗谝骈犏胼翩蹁"</span>],</span><br><span class="line">        [<span class="string">"Piao"</span>, <span class="string">"飘漂瓢票剽嘌嫖缥殍瞟螵"</span>],</span><br><span class="line">        [<span class="string">"Pie"</span>, <span class="string">"撇瞥丿苤氕"</span>],</span><br><span class="line">        [<span class="string">"Pin"</span>, <span class="string">"拼频贫品聘姘嫔榀牝颦"</span>],</span><br><span class="line">        [<span class="string">"Ping"</span>, <span class="string">"乒坪苹萍平凭瓶评屏俜娉枰鲆"</span>],</span><br><span class="line">        [<span class="string">"Po"</span>, <span class="string">"坡泼颇婆破魄迫粕叵鄱珀钋钷皤笸"</span>],</span><br><span class="line">        [<span class="string">"Pou"</span>, <span class="string">"剖裒掊"</span>],</span><br><span class="line">        [<span class="string">"Pu"</span>, <span class="string">"扑铺仆莆葡菩蒲埔朴圃普浦谱瀑匍噗溥濮璞氆镤镨蹼"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Qi"</span>,</span><br><span class="line">            <span class="string">"期欺栖戚妻七凄漆柒沏其棋奇歧畦崎脐齐旗祈祁骑起岂乞企启契砌器气迄弃汽泣讫亓圻芑芪萁萋葺蕲嘁屺岐汔淇骐绮琪琦杞桤槭耆祺憩碛颀蛴蜞綦鳍麒"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Qia"</span>, <span class="string">"掐恰洽葜袷髂"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Qian"</span>,</span><br><span class="line">            <span class="string">"牵扦钎铅千迁签仟谦乾黔钱钳前潜遣浅谴堑嵌欠歉倩佥阡芊芡茜掮岍悭慊骞搴褰缱椠肷愆钤虔箝"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Qiang"</span>, <span class="string">"枪呛腔羌墙蔷强抢戕嫱樯戗炝锖锵镪襁蜣羟跄"</span>],</span><br><span class="line">        [<span class="string">"Qiao"</span>, <span class="string">"橇锹敲悄桥瞧乔侨巧鞘撬翘峭俏窍劁诮谯荞愀憔缲樵硗跷鞒"</span>],</span><br><span class="line">        [<span class="string">"Qie"</span>, <span class="string">"切茄且怯窃郄惬妾挈锲箧趄"</span>],</span><br><span class="line">        [<span class="string">"Qin"</span>, <span class="string">"钦侵亲秦琴勤芹擒禽寝沁芩揿吣嗪噙溱檎锓螓衾"</span>],</span><br><span class="line">        [<span class="string">"Qing"</span>, <span class="string">"青轻氢倾卿清擎晴氰情顷请庆苘圊檠磬蜻罄綮謦鲭黥"</span>],</span><br><span class="line">        [<span class="string">"Qiong"</span>, <span class="string">"琼穷邛茕穹蛩筇跫銎"</span>],</span><br><span class="line">        [<span class="string">"Qiu"</span>, <span class="string">"秋丘邱球求囚酋泅俅巯犰湫逑遒楸赇虬蚯蝤裘糗鳅鼽"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Qu"</span>,</span><br><span class="line">            <span class="string">"趋区蛆曲躯屈驱渠取娶龋趣去诎劬蕖蘧岖衢阒璩觑氍朐祛磲鸲癯蛐蠼麴瞿黢"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Quan"</span>, <span class="string">"圈颧权醛泉全痊拳犬券劝诠荃犭悛绻辁畎铨蜷筌鬈"</span>],</span><br><span class="line">        [<span class="string">"Que"</span>, <span class="string">"缺炔瘸却鹊榷确雀阕阙悫"</span>],</span><br><span class="line">        [<span class="string">"Qun"</span>, <span class="string">"裙群逡"</span>],</span><br><span class="line">        [<span class="string">"Ran"</span>, <span class="string">"然燃冉染苒蚺髯"</span>],</span><br><span class="line">        [<span class="string">"Rang"</span>, <span class="string">"瓤壤攘嚷让禳穰"</span>],</span><br><span class="line">        [<span class="string">"Rao"</span>, <span class="string">"饶扰绕荛娆桡"</span>],</span><br><span class="line">        [<span class="string">"Re"</span>, <span class="string">"惹热"</span>],</span><br><span class="line">        [<span class="string">"Ren"</span>, <span class="string">"壬仁人忍韧任认刃妊纫仞荏饪轫稔衽"</span>],</span><br><span class="line">        [<span class="string">"Reng"</span>, <span class="string">"扔仍"</span>],</span><br><span class="line">        [<span class="string">"Ri"</span>, <span class="string">"日"</span>],</span><br><span class="line">        [<span class="string">"Rong"</span>, <span class="string">"戎茸蓉荣融熔溶容绒冗嵘狨榕肜蝾"</span>],</span><br><span class="line">        [<span class="string">"Rou"</span>, <span class="string">"揉柔肉糅蹂鞣"</span>],</span><br><span class="line">        [<span class="string">"Ru"</span>, <span class="string">"茹蠕儒孺如辱乳汝入褥蓐薷嚅洳溽濡缛铷襦颥"</span>],</span><br><span class="line">        [<span class="string">"Ruan"</span>, <span class="string">"软阮朊"</span>],</span><br><span class="line">        [<span class="string">"Rui"</span>, <span class="string">"蕊瑞锐芮蕤枘睿蚋"</span>],</span><br><span class="line">        [<span class="string">"Run"</span>, <span class="string">"闰润"</span>],</span><br><span class="line">        [<span class="string">"Ruo"</span>, <span class="string">"若弱偌箬"</span>],</span><br><span class="line">        [<span class="string">"Sa"</span>, <span class="string">"撒洒萨卅脎飒"</span>],</span><br><span class="line">        [<span class="string">"Sai"</span>, <span class="string">"腮鳃塞赛噻"</span>],</span><br><span class="line">        [<span class="string">"San"</span>, <span class="string">"三叁伞散仨彡馓毵"</span>],</span><br><span class="line">        [<span class="string">"Sang"</span>, <span class="string">"桑嗓丧搡磉颡"</span>],</span><br><span class="line">        [<span class="string">"Sao"</span>, <span class="string">"搔骚扫嫂埽缫臊瘙鳋"</span>],</span><br><span class="line">        [<span class="string">"Se"</span>, <span class="string">"瑟色涩啬铯穑"</span>],</span><br><span class="line">        [<span class="string">"Sen"</span>, <span class="string">"森"</span>],</span><br><span class="line">        [<span class="string">"Seng"</span>, <span class="string">"僧"</span>],</span><br><span class="line">        [<span class="string">"Sha"</span>, <span class="string">"莎砂杀刹沙纱傻啥煞唼歃铩痧裟霎鲨"</span>],</span><br><span class="line">        [<span class="string">"Shai"</span>, <span class="string">"筛晒酾"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Shan"</span>,</span><br><span class="line">            <span class="string">"珊苫杉山删煽衫闪陕擅赡膳善汕扇缮讪鄯芟潸姗嬗骟膻钐疝蟮舢跚鳝"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Shang"</span>, <span class="string">"墒伤商赏晌上尚裳垧泷绱殇熵觞"</span>],</span><br><span class="line">        [<span class="string">"Shao"</span>, <span class="string">"梢捎稍烧芍勺韶少哨邵绍劭潲杓筲艄"</span>],</span><br><span class="line">        [<span class="string">"She"</span>, <span class="string">"奢赊蛇舌舍赦摄射慑涉社设厍佘揲猞滠麝"</span>],</span><br><span class="line">        [<span class="string">"Shen"</span>, <span class="string">"砷申呻伸身深娠绅神沈审婶甚肾慎渗什诜谂莘葚哂渖椹胂矧蜃糁"</span>],</span><br><span class="line">        [<span class="string">"Sheng"</span>, <span class="string">"声生甥牲升绳省盛剩胜圣嵊晟眚笙"</span>],</span><br><span class="line">        [<span class="string">"Shou"</span>, <span class="string">"收手首守寿授售受瘦兽狩绶艏"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Shu"</span>,</span><br><span class="line">            <span class="string">"蔬枢梳殊抒输叔舒淑疏书赎孰熟薯暑曙署蜀黍鼠属术述树束戍竖墅庶数漱恕丨倏塾菽摅沭澍姝纾毹腧殳秫"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Shua"</span>, <span class="string">"刷耍唰"</span>],</span><br><span class="line">        [<span class="string">"Shuai"</span>, <span class="string">"摔衰甩帅蟀"</span>],</span><br><span class="line">        [<span class="string">"Shuan"</span>, <span class="string">"栓拴闩涮"</span>],</span><br><span class="line">        [<span class="string">"Shuang"</span>, <span class="string">"霜双爽孀"</span>],</span><br><span class="line">        [<span class="string">"Shui"</span>, <span class="string">"谁水睡税"</span>],</span><br><span class="line">        [<span class="string">"Shun"</span>, <span class="string">"吮瞬顺舜"</span>],</span><br><span class="line">        [<span class="string">"Shuo"</span>, <span class="string">"说硕朔烁蒴搠妁槊铄"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Si"</span>,</span><br><span class="line">            <span class="string">"斯撕嘶思私司丝死肆寺嗣四伺似饲巳厮俟兕厶咝汜泗澌姒驷缌祀锶鸶耜蛳笥"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Song"</span>, <span class="string">"松耸怂颂送宋讼诵凇菘崧嵩忪悚淞竦"</span>],</span><br><span class="line">        [<span class="string">"Sou"</span>, <span class="string">"搜艘擞嗽叟薮嗖嗾馊溲飕瞍锼螋"</span>],</span><br><span class="line">        [<span class="string">"Su"</span>, <span class="string">"苏酥俗素速粟僳塑溯宿诉肃夙谡蔌嗉愫涑簌觫稣"</span>],</span><br><span class="line">        [<span class="string">"Suan"</span>, <span class="string">"酸蒜算狻"</span>],</span><br><span class="line">        [<span class="string">"Sui"</span>, <span class="string">"虽隋随绥髓碎岁穗遂隧祟谇荽濉邃燧眭睢"</span>],</span><br><span class="line">        [<span class="string">"Sun"</span>, <span class="string">"孙损笋荪狲飧榫隼"</span>],</span><br><span class="line">        [<span class="string">"Suo"</span>, <span class="string">"蓑梭唆缩琐索锁所唢嗦嗍娑桫挲睃羧"</span>],</span><br><span class="line">        [<span class="string">"Ta"</span>, <span class="string">"塌他它她塔獭挞蹋踏嗒闼溻遢榻沓铊趿鳎"</span>],</span><br><span class="line">        [<span class="string">"Tai"</span>, <span class="string">"胎苔抬台泰酞太态汰邰薹骀肽炱钛跆鲐"</span>],</span><br><span class="line">        [<span class="string">"Tang"</span>, <span class="string">"汤塘搪堂棠膛唐糖倘躺淌趟烫傥帑溏瑭樘铴镗耥螗螳羰醣"</span>],</span><br><span class="line">        [<span class="string">"Tao"</span>, <span class="string">"掏涛滔绦萄桃逃淘陶讨套鼗啕洮韬饕"</span>],</span><br><span class="line">        [<span class="string">"Te"</span>, <span class="string">"特忑慝铽"</span>],</span><br><span class="line">        [<span class="string">"Teng"</span>, <span class="string">"藤腾疼誊滕"</span>],</span><br><span class="line">        [<span class="string">"Ti"</span>, <span class="string">"梯剔踢锑提题蹄啼体替嚏惕涕剃屉倜悌逖绨缇鹈裼醍"</span>],</span><br><span class="line">        [<span class="string">"Tian"</span>, <span class="string">"天添填田甜恬舔腆掭忝阗殄畋"</span>],</span><br><span class="line">        [<span class="string">"Tie"</span>, <span class="string">"贴铁帖萜餮"</span>],</span><br><span class="line">        [<span class="string">"Ting"</span>, <span class="string">"厅听烃汀廷停亭庭挺艇莛葶婷梃铤蜓霆"</span>],</span><br><span class="line">        [<span class="string">"Tong"</span>, <span class="string">"通桐酮瞳同铜彤童桶捅筒统痛佟仝茼嗵恸潼砼"</span>],</span><br><span class="line">        [<span class="string">"Tou"</span>, <span class="string">"偷投头透骰"</span>],</span><br><span class="line">        [<span class="string">"Tu"</span>, <span class="string">"凸秃突图徒途涂屠土吐兔堍荼菟钍酴"</span>],</span><br><span class="line">        [<span class="string">"Tuan"</span>, <span class="string">"湍团抟彖疃"</span>],</span><br><span class="line">        [<span class="string">"Tui"</span>, <span class="string">"推颓腿蜕褪退忒煺"</span>],</span><br><span class="line">        [<span class="string">"Tuo"</span>, <span class="string">"拖托脱鸵陀驮驼椭妥拓唾佗坨庹沱柝柁橐砣箨酡跎鼍"</span>],</span><br><span class="line">        [<span class="string">"Wa"</span>, <span class="string">"挖哇蛙洼娃瓦袜佤娲腽"</span>],</span><br><span class="line">        [<span class="string">"Wai"</span>, <span class="string">"歪外崴"</span>],</span><br><span class="line">        [<span class="string">"Wan"</span>, <span class="string">"豌弯湾玩顽丸烷完碗挽晚皖惋宛婉万腕剜芄菀纨绾琬脘畹蜿"</span>],</span><br><span class="line">        [<span class="string">"Wang"</span>, <span class="string">"汪王亡枉网往旺望忘妄罔惘辋魍"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Wei"</span>,</span><br><span class="line">            <span class="string">"威巍微危韦违桅围唯惟为潍维苇萎委伟伪尾纬未蔚味畏胃喂魏位渭谓尉慰卫偎诿隈葳薇帏帷嵬猥猬闱沩洧涠逶娓玮韪軎炜煨痿艉鲔"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Wen"</span>, <span class="string">"瘟温蚊文闻纹吻稳紊问刎阌汶璺攵雯"</span>],</span><br><span class="line">        [<span class="string">"Weng"</span>, <span class="string">"嗡翁瓮蓊蕹"</span>],</span><br><span class="line">        [<span class="string">"Wo"</span>, <span class="string">"挝蜗涡窝我斡卧握沃倭莴喔幄渥肟硪龌"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Wu"</span>,</span><br><span class="line">            <span class="string">"巫呜钨乌污诬屋无芜梧吾吴毋武五捂午舞伍侮坞戊雾晤物勿务悟误兀仵阢邬圬芴唔庑怃忤寤迕妩婺骛杌牾焐鹉鹜痦蜈鋈鼯"</span></span><br><span class="line">        ],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Xi"</span>,</span><br><span class="line">            <span class="string">"昔熙析西硒矽晰嘻吸锡牺稀息希悉膝夕惜熄烯溪汐犀檄袭席习媳喜铣洗系隙戏细僖兮隰郗菥葸蓰奚唏徙饩阋浠淅屣嬉玺樨曦觋欷歙熹禊禧皙穸蜥螅蟋舄舾羲粞翕醯蹊鼷"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Xia"</span>, <span class="string">"瞎虾匣霞辖暇峡侠狭下厦夏吓呷狎遐瑕柙硖罅黠"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Xian"</span>,</span><br><span class="line">            <span class="string">"掀锨先仙鲜纤咸贤衔舷闲涎弦嫌显险现献县腺馅羡宪陷限线冼苋莶藓岘猃暹娴氙燹祆鹇痫蚬筅籼酰跣跹霰"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Xiang"</span>, <span class="string">"相厢镶香箱襄湘乡翔祥详想响享项巷橡像向象芗葙饷庠骧缃蟓鲞飨"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Xiao"</span>,</span><br><span class="line">            <span class="string">"萧硝霄削哮嚣销消宵淆晓小孝校肖啸笑效哓崤潇逍骁绡枭枵蛸筱箫魈"</span></span><br><span class="line">        ],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Xie"</span>,</span><br><span class="line">            <span class="string">"楔些歇蝎鞋协挟携邪斜胁谐写械卸蟹懈泄泻谢屑偕亵勰燮薤撷獬廨渫瀣邂绁缬榭榍蹀躞"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Xin"</span>, <span class="string">"薪芯锌欣辛新忻心信衅囟馨昕歆镡鑫"</span>],</span><br><span class="line">        [<span class="string">"Xing"</span>, <span class="string">"星腥猩惺兴刑型形邢醒幸杏性姓陉荇荥擤饧悻硎"</span>],</span><br><span class="line">        [<span class="string">"Xiong"</span>, <span class="string">"兄凶胸匈汹雄熊芎"</span>],</span><br><span class="line">        [<span class="string">"Xiu"</span>, <span class="string">"休修羞朽嗅锈秀袖绣咻岫馐庥溴鸺貅髹"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Xu"</span>,</span><br><span class="line">            <span class="string">"墟戌需虚嘘须徐许蓄酗叙旭序畜恤絮婿绪续诩勖圩蓿洫溆顼栩煦盱胥糈醑"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Xuan"</span>, <span class="string">"轩喧宣悬旋玄选癣眩绚儇谖萱揎泫渲漩璇楦暄炫煊碹铉镟痃"</span>],</span><br><span class="line">        [<span class="string">"Xue"</span>, <span class="string">"靴薛学穴雪血谑噱泶踅鳕"</span>],</span><br><span class="line">        [<span class="string">"Xun"</span>, <span class="string">"勋熏循旬询寻驯巡殉汛训讯逊迅巽郇埙荀荨蕈薰峋徇獯恂洵浔曛醺鲟"</span>],</span><br><span class="line">        [<span class="string">"Ya"</span>, <span class="string">"压押鸦鸭呀丫芽牙蚜崖衙涯雅哑亚讶伢垭揠岈迓娅琊桠氩砑睚痖"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Yan"</span>,</span><br><span class="line">            <span class="string">"焉咽阉烟淹盐严研蜒岩延言颜阎炎沿奄掩眼衍演艳堰燕厌砚雁唁彦焰宴谚验厣赝剡俨偃兖谳郾鄢埏菸崦恹闫阏湮滟妍嫣琰檐晏胭焱罨筵酽趼魇餍鼹"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Yang"</span>, <span class="string">"殃央鸯秧杨扬佯疡羊洋阳氧仰痒养样漾徉怏泱炀烊恙蛘鞅"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Yao"</span>,</span><br><span class="line">            <span class="string">"邀腰妖瑶摇尧遥窑谣姚咬舀药要耀钥夭爻吆崾徭幺珧杳轺曜肴铫鹞窈鳐"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Ye"</span>, <span class="string">"椰噎耶爷野冶也页掖业叶曳腋夜液靥谒邺揶晔烨铘"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Yi"</span>,</span><br><span class="line">            <span class="string">"一壹医揖铱依伊衣颐夷遗移仪胰疑沂宜姨彝椅蚁倚已乙矣以艺抑易邑屹亿役臆逸肄疫亦裔意毅忆义益溢诣议谊译异翼翌绎刈劓佚佾诒圯埸懿苡荑薏弈奕挹弋呓咦咿噫峄嶷猗饴怿怡悒漪迤驿缢殪轶贻欹旖熠眙钇镒镱痍瘗癔翊蜴舣羿"</span></span><br><span class="line">        ],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Yin"</span>,</span><br><span class="line">            <span class="string">"茵荫因殷音阴姻吟银淫寅饮尹引隐印胤鄞垠堙茚吲喑狺夤洇氤铟瘾窨蚓霪龈"</span></span><br><span class="line">        ],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Ying"</span>,</span><br><span class="line">            <span class="string">"英樱婴鹰应缨莹萤营荧蝇迎赢盈影颖硬映嬴郢茔莺萦蓥撄嘤膺滢潆瀛瑛璎楹媵鹦瘿颍罂"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Yo"</span>, <span class="string">"哟唷"</span>],</span><br><span class="line">        [<span class="string">"Yong"</span>, <span class="string">"拥佣臃痈庸雍踊蛹咏泳涌永恿勇用俑壅墉喁慵邕镛甬鳙饔"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"You"</span>,</span><br><span class="line">            <span class="string">"幽优悠忧尤由邮铀犹油游酉有友右佑釉诱又幼卣攸侑莠莜莸尢呦囿宥柚猷牖铕疣蚰蚴蝣繇鱿黝鼬"</span></span><br><span class="line">        ],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Yu"</span>,</span><br><span class="line">            <span class="string">"迂淤于盂榆虞愚舆余俞逾鱼愉渝渔隅予娱雨与屿禹宇语羽玉域芋郁吁遇喻峪御愈欲狱育誉浴寓裕预豫驭禺毓伛俣谀谕萸蓣揄圄圉嵛狳饫馀庾阈鬻妪妤纡瑜昱觎腴欤於煜燠聿畲钰鹆鹬瘐瘀窬窳蜮蝓竽臾舁雩龉"</span></span><br><span class="line">        ],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Yuan"</span>,</span><br><span class="line">            <span class="string">"鸳渊冤元垣袁原援辕园员圆猿源缘远苑愿怨院垸塬芫掾沅媛瑗橼爰眢鸢螈箢鼋"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Yun"</span>, <span class="string">"耘云郧匀陨允运蕴酝晕韵孕郓芸狁恽愠纭韫殒昀氲熨"</span>],</span><br><span class="line">        [<span class="string">"Za"</span>, <span class="string">"匝砸杂咋拶咂"</span>],</span><br><span class="line">        [<span class="string">"Zai"</span>, <span class="string">"栽哉灾宰载再在崽甾"</span>],</span><br><span class="line">        [<span class="string">"Zan"</span>, <span class="string">"咱攒暂赞瓒昝簪糌趱錾"</span>],</span><br><span class="line">        [<span class="string">"Zang"</span>, <span class="string">"赃脏葬奘驵臧"</span>],</span><br><span class="line">        [<span class="string">"Zao"</span>, <span class="string">"遭糟凿藻枣早澡蚤躁噪造皂灶燥唣"</span>],</span><br><span class="line">        [<span class="string">"Ze"</span>, <span class="string">"责择则泽仄赜啧帻迮昃箦舴"</span>],</span><br><span class="line">        [<span class="string">"Zei"</span>, <span class="string">"贼"</span>],</span><br><span class="line">        [<span class="string">"Zen"</span>, <span class="string">"怎谮"</span>],</span><br><span class="line">        [<span class="string">"Zeng"</span>, <span class="string">"增憎赠缯甑罾锃"</span>],</span><br><span class="line">        [<span class="string">"Zha"</span>, <span class="string">"扎喳渣札轧铡闸眨栅榨乍炸诈柞揸吒咤哳楂砟痄蚱齄"</span>],</span><br><span class="line">        [<span class="string">"Zhan"</span>, <span class="string">"瞻毡詹粘沾盏斩辗崭展蘸栈占战站湛绽谵搌旃"</span>],</span><br><span class="line">        [<span class="string">"Zhang"</span>, <span class="string">"樟章彰漳张掌涨杖丈帐账仗胀瘴障仉鄣幛嶂獐嫜璋蟑"</span>],</span><br><span class="line">        [<span class="string">"Zhao"</span>, <span class="string">"招昭找沼赵照罩兆肇召着诏棹钊笊"</span>],</span><br><span class="line">        [<span class="string">"Zhe"</span>, <span class="string">"遮折哲蛰辙者锗蔗这浙乇谪摺柘辄磔鹧褶蜇螫赭"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Zhen"</span>,</span><br><span class="line">            <span class="string">"珍斟真甄砧臻贞针侦枕疹诊震振镇阵帧圳蓁浈缜桢榛轸赈胗朕祯畛稹鸩箴"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Zheng"</span>, <span class="string">"蒸挣睁征狰争怔整拯正政症郑证诤峥徵钲铮筝"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Zhi"</span>,</span><br><span class="line">            <span class="string">"芝枝支吱蜘知肢脂汁之织职直植殖执值侄址指止趾只旨纸志挚掷至致置帜峙制智秩稚质炙痔滞治窒卮陟郅埴芷摭帙忮彘咫骘栉枳栀桎轵轾贽胝膣祉黹雉鸷痣蛭絷酯跖踬踯豸觯"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Zhong"</span>, <span class="string">"中盅忠钟衷终种肿仲众冢锺螽舯踵"</span>],</span><br><span class="line">        [<span class="string">"Zhou"</span>, <span class="string">"舟周州洲诌粥轴肘帚咒皱宙昼骤荮啁妯纣绉胄碡籀酎"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Zhu"</span>,</span><br><span class="line">            <span class="string">"珠株蛛朱猪诸诛逐竹烛煮拄瞩嘱主著柱助蛀贮铸筑住注祝驻伫侏邾苎茱洙渚潴杼槠橥炷铢疰瘃竺箸舳翥躅麈"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Zhua"</span>, <span class="string">"抓爪"</span>],</span><br><span class="line">        [<span class="string">"Zhuai"</span>, <span class="string">"拽"</span>],</span><br><span class="line">        [<span class="string">"Zhuan"</span>, <span class="string">"专砖转撰赚篆啭馔颛"</span>],</span><br><span class="line">        [<span class="string">"Zhui"</span>, <span class="string">"椎锥追赘坠缀萑惴骓缒隹"</span>],</span><br><span class="line">        [<span class="string">"Zhun"</span>, <span class="string">"谆准肫窀"</span>],</span><br><span class="line">        [<span class="string">"Zhuo"</span>, <span class="string">"捉拙卓桌琢茁酌啄灼浊倬诼擢浞涿濯禚斫镯"</span>],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"Zi"</span>,</span><br><span class="line">            <span class="string">"兹咨资姿滋淄孜紫仔籽滓子自渍字谘呲嵫姊孳缁梓辎赀恣眦锱秭耔笫粢趑訾龇鲻髭"</span></span><br><span class="line">        ],</span><br><span class="line">        [<span class="string">"Zong"</span>, <span class="string">"鬃棕踪宗综总纵偬腙粽"</span>],</span><br><span class="line">        [<span class="string">"Zou"</span>, <span class="string">"邹走奏揍诹陬鄹驺鲰"</span>],</span><br><span class="line">        [<span class="string">"Zu"</span>, <span class="string">"租足族祖诅阻组俎菹镞"</span>],</span><br><span class="line">        [<span class="string">"Zuan"</span>, <span class="string">"钻纂攥缵躜"</span>],</span><br><span class="line">        [<span class="string">"Zui"</span>, <span class="string">"嘴醉最罪蕞觜"</span>],</span><br><span class="line">        [<span class="string">"Zun"</span>, <span class="string">"尊遵撙樽鳟"</span>],</span><br><span class="line">        [<span class="string">"Zuo"</span>, <span class="string">"昨左佐做作坐座阼唑怍胙祚笮"</span>],</span><br><span class="line">        [<span class="string">"Ei"</span>, <span class="string">"诶"</span>],</span><br><span class="line">        [<span class="string">"Dia"</span>, <span class="string">"嗲"</span>],</span><br><span class="line">        [<span class="string">"Cen"</span>, <span class="string">"岑涔"</span>],</span><br><span class="line">        [<span class="string">"Nou"</span>, <span class="string">"耨"</span>]</span><br><span class="line">    ],</span><br><span class="line">    go: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> str = <span class="built_in">arguments</span>[<span class="number">0</span>].replace(<span class="regexp">/(^\s*)|(\s*$)/g</span>, <span class="string">""</span>);</span><br><span class="line">        <span class="keyword">var</span> e = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">var</span> c, l1, l2;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; str.length; i++) &#123;</span><br><span class="line">            l1 = str.charAt(i);</span><br><span class="line">            c = l1.charCodeAt();</span><br><span class="line">            <span class="keyword">if</span> (c &gt; <span class="number">1</span> &amp;&amp; c &lt; <span class="number">128</span>) &#123;</span><br><span class="line">                <span class="comment">//数字、字母</span></span><br><span class="line">                <span class="keyword">if</span> (<span class="regexp">/^[A-Za-z0-9]+$/</span>.test(l1)) &#123;</span><br><span class="line">                    e += l1;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    e += <span class="string">" "</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">//汉字</span></span><br><span class="line">                <span class="keyword">var</span> pp = pinyin.mfkdb;</span><br><span class="line">                <span class="keyword">var</span> ii = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">while</span> (ii &lt; pp.length) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (pp[ii][<span class="number">1</span>].indexOf(l1) &gt; <span class="number">-1</span>) &#123;</span><br><span class="line">                        e += pp[ii][<span class="number">0</span>];</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    ii++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        e = e.replace(<span class="regexp">/\s/g</span>, <span class="string">"_"</span>);</span><br><span class="line">        <span class="keyword">while</span> (e.indexOf(<span class="string">"__"</span>) &gt; <span class="number">-1</span>) &#123;</span><br><span class="line">            e = e.replace(<span class="regexp">/__/g</span>, <span class="string">"_"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">arguments</span>[<span class="number">1</span>] == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> e.toLowerCase();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> e;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//使用方法（1）：pinyin.go('汉字'); //例：张家界 ZhangJiaJie (首字大写)</span></span><br><span class="line"><span class="comment">//使用方法（2）：pinyin.go('汉字',1);//例：张家界 zhangjiajie (全小写)</span></span><br><span class="line"><span class="keyword">var</span> s = pinyin.go(<span class="string">"你的"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// // 获取汉子首字母大写</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="string">"维"</span>, <span class="string">"我的"</span>, <span class="string">"你的"</span>, <span class="string">"aaa"</span>, <span class="string">"他的"</span>];</span><br><span class="line"><span class="keyword">var</span> result = arr.map(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> pinyin</span><br><span class="line">        .go(item)</span><br><span class="line">        .substring(<span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">        .toUpperCase();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 去重</span></span><br><span class="line"><span class="keyword">var</span> array = [...new <span class="built_in">Set</span>(result)];</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"array"</span>, array);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/15/微信小程序开发总结/" rel="next" title="微信小程序开发总结">
+                <i class="fa fa-chevron-left"></i> 微信小程序开发总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MTk5OS8xODU0Ng=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="喻航">
+            
+              <p class="site-author-name" itemprop="name">喻航</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">喻航</span>
+
+  
+</div>
+
+
+  <div class="powered-by"> 个人专属</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">前端技术博客 &mdash; </div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+</body>
+</html>
