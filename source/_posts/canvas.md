@@ -61,3 +61,47 @@ tags:
     </body>
 </html>
 ```
+
+#### 二、绘制圆角矩形
+
+```js
+/**
+ *绘制圆角矩形
+ * @param {*} context canvas 上下文
+ * @param {*} x 起始点x坐标
+ * @param {*} y 起始点y坐标
+ * @param {*} width 长方形宽度
+ * @param {*} height 长方形高度
+ * @param {*} r 圆角半径
+ * @param {*} lineWidth 线宽度 （可选，默认为1）
+ * @param {*} strokeStyle 线颜色 （可选，默认为#000）
+ */
+function drawRoundRect(
+    context,
+    x,
+    y,
+    width,
+    height,
+    r,
+    lineWidth = 1,
+    strokeStyle = "#000"
+) {
+    context.beginPath();
+    context.moveTo(x, y + r);
+    context.lineTo(x, y + height - r);
+    context.quadraticCurveTo(x, y + height, x + r, y + height);
+    context.lineTo(x + width - r, y + height);
+    context.quadraticCurveTo(x + width, y + height, x + width, y + height - r);
+    context.lineTo(x + width, y + r);
+    context.quadraticCurveTo(x + width, y, x + width - r, y);
+    context.lineTo(x + r, y);
+    context.quadraticCurveTo(x, y, x, y + r);
+    context.lineWidth = lineWidth;
+    context.strokeStyle = strokeStyle;
+
+    context.stroke();
+}
+// 示例
+drawRoundRect(context, 10, 10, 100, 100, 10);
+drawRoundRect(context, 10, 10, 100, 100, 10, 5, "red");
+```
