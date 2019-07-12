@@ -150,3 +150,36 @@ var text = "hello word hello word hello wrod";
 
 var a = textByteLength(text, 6); // [32, ["hello ", "word h", "ello w", "ord he", "llo wr", "od"], 6 ]
 ```
+
+#### 四 、canvas 测量文字宽度
+
+```js
+/**
+ *测量文字宽度
+ *
+ * @export
+ * @param {*} context
+ * @param {string} [text=""] 需要测量的文字宽度
+ * @param {string} rowByte number 单行字节数
+ * @returns textWidth  返回文字宽度
+ */
+export function measureText(context, text = "", rowByte) {
+    text = String(text);
+    if (typeof rowByte === "undefined") {
+        rowByte = 40;
+    }
+    let currentLineStr = "";
+    const content = textByteLength(text, rowByte);
+    console.log("content", content);
+    if (content[1][0] > rowByte) {
+        currentLineStr =
+            content[1][0].substr(0, content[1][0].length - 2) + "...";
+    } else {
+        currentLineStr = content[1][0].substr(0, content[1][0].length - 1);
+    }
+
+    let textWidth = context.measureText(currentLineStr);
+
+    return textWidth.width;
+}
+```
