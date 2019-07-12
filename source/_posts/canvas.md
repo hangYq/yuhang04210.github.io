@@ -86,6 +86,10 @@ function drawRoundRect(
     lineWidth = 1,
     strokeStyle = "#000"
 ) {
+    //圆的直径必然要小于矩形的宽高
+    if (2 * r > width || 2 * r > height) {
+        return false;
+    }
     context.beginPath();
     context.moveTo(x, y + r);
     context.lineTo(x, y + height - r);
@@ -181,5 +185,37 @@ export function measureText(context, text = "", rowByte) {
     let textWidth = context.measureText(currentLineStr);
 
     return textWidth.width;
+}
+```
+
+#### 五、获取文字字节数
+
+```js
+//获取文字字节数
+function getTextByteLength(str = "") {
+    let result = 0;
+    for (let i = 0; i < str.length; i++) {
+        if (str.charCodeAt(i) > 255) {
+            //charCodeAt值大于255为中文，一个中文为两个字节
+            result += 2;
+        } else {
+            // 一个英文为一个字节
+            result++;
+        }
+    }
+    return result;
+}
+```
+
+#### 六、获取文字行数
+
+```js
+//获取文字行数
+function getTextLineClamp(str = "", rowByte, maxClamp) {
+    let clamp = Math.ceil(getTextByteLength(str) / rowByte);
+    if (typeof maxClamp === "undefined") {
+        maxClamp = clamp;
+    }
+    return clamp > maxClamp ? maxClamp : clamp;
 }
 ```
