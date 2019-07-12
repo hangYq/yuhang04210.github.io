@@ -126,6 +126,7 @@ function textByteLength(text, num) {
     let arr = [];
     for (let j = 0; j < text.length; j++) {
         if (text.charCodeAt(j) > 255) {
+            // 如果是中文，一个字占两个字节
             strLength += 2;
             if (strLength > rows * num) {
                 arr.push(text.slice(str, j));
@@ -133,6 +134,7 @@ function textByteLength(text, num) {
                 rows++;
             }
         } else {
+            // 如果是英文，一个字占一个字节
             strLength++;
             if (strLength > rows * num) {
                 arr.push(text.slice(str, j));
@@ -141,7 +143,7 @@ function textByteLength(text, num) {
             }
         }
     }
-    arr.push(text.slice(str, text.length));
+    arr.push(text.slice(str, text.length)); // 处理剩余最后一行的文字
     return [strLength, arr, rows]; //  [处理文字的总字节长度，每行显示内容的数组，行数]
 }
 var text = "hello word hello word hello wrod";
