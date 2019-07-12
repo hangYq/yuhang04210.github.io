@@ -105,3 +105,46 @@ function drawRoundRect(
 drawRoundRect(context, 10, 10, 100, 100, 10);
 drawRoundRect(context, 10, 10, 100, 100, 10, 5, "red");
 ```
+
+#### 三 、canvas 中处理文字换行转化
+
+```js
+/* 文字换行转化
+ * @params text: string 文字
+ *         num : number 单行字节长度
+ * @return [处理文字的总字节长度: number，每行显示内容的数组: Array<string>，行数: number]
+ */
+function textByteLength(text, num) {
+    // text为传入的文本  num为单行显示的字节长度
+    if (typeof text !== "string" || text === "") {
+        return [0, [], 0];
+    }
+    text = text.replace(/[\n\r]/g, "");
+    let strLength = 0; // text byte length
+    let rows = 1;
+    let str = 0;
+    let arr = [];
+    for (let j = 0; j < text.length; j++) {
+        if (text.charCodeAt(j) > 255) {
+            strLength += 2;
+            if (strLength > rows * num) {
+                arr.push(text.slice(str, j));
+                str = j;
+                rows++;
+            }
+        } else {
+            strLength++;
+            if (strLength > rows * num) {
+                arr.push(text.slice(str, j));
+                str = j;
+                rows++;
+            }
+        }
+    }
+    arr.push(text.slice(str, text.length));
+    return [strLength, arr, rows]; //  [处理文字的总字节长度，每行显示内容的数组，行数]
+}
+var text = "hello word hello word hello wrod";
+
+var a = textByteLength(text, 6); // [32, ["hello ", "word h", "ello w", "ord he", "llo wr", "od"], 6 ]
+```
